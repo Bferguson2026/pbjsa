@@ -351,6 +351,42 @@
   });
 })();
 
+/* ── FAQ Sticky Sidebar ───────────────────────────────────── */
+(function () {
+  var nav    = document.querySelector('.faq-cat-nav');
+  var layout = document.querySelector('.faq-layout');
+  if (!nav || !layout) return;
+
+  var frozen = false;
+
+  function freeze() {
+    var r = nav.getBoundingClientRect();
+    nav.style.cssText = 'position:fixed;top:6rem;left:' + Math.round(r.left) + 'px;width:' + Math.round(r.width) + 'px;';
+    frozen = true;
+  }
+
+  function unfreeze() {
+    nav.style.cssText = '';
+    frozen = false;
+  }
+
+  function check() {
+    var rem     = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    var topPx   = rem * 6;
+    var lBottom = layout.getBoundingClientRect().bottom;
+
+    if (lBottom < topPx + nav.offsetHeight) {
+      if (!frozen) freeze();
+    } else {
+      if (frozen) unfreeze();
+    }
+  }
+
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', function () { unfreeze(); check(); }, { passive: true });
+  check();
+})();
+
 /* ── Maps Address Popovers ────────────────────────────────── */
 (function () {
   var triggers = document.querySelectorAll('.maps-trigger');
