@@ -11,6 +11,15 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
+  <!-- ── Splash Screen ────────────────────────────────────── -->
+  <div id="splash" aria-hidden="true">
+    <div class="splash-ring splash-ring--lg"></div>
+    <div class="splash-ring splash-ring--md"></div>
+    <div class="splash-glow"></div>
+    <img src="assets/img/pbj-logo.png" alt="" class="splash-logo">
+    <p class="splash-tagline">Precision &middot; Balance &middot; Just-in-Time</p>
+  </div>
+
   <!-- ── Header ──────────────────────────────────────────── -->
   <header class="site-header">
     <div class="container header-inner">
@@ -270,5 +279,18 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var splash = document.getElementById('splash');
+      if (!splash) return;
+      document.body.classList.add('splash-active');
+      splash.addEventListener('animationend', function (e) {
+        if (e.animationName === 'splash-exit') {
+          splash.remove();
+          document.body.classList.remove('splash-active');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
