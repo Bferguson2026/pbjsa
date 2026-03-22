@@ -1639,13 +1639,21 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* Header / footer logo image */
 .site-logo {
-  height: 64px;
+  height: 130px;
   width: auto;
   display: block;
+  position: relative;
+  z-index: 1;
 }
+
+/* Allow logo to bleed outside the header without shifting nav */
+.site-header { overflow: visible; }
+.brand { overflow: visible; }
+
 .footer-brand .site-logo {
   filter: brightness(0) invert(1);
-  opacity: .88;
+  opacity: .9;
+  height: 130px;
 }
 
 /* Hero panel photo (Brittany headshot fills the right panel) */
