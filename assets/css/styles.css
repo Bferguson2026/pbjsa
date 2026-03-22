@@ -792,6 +792,40 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   align-items: start;
 }
 
+.contact-portrait {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-portrait-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--pink-light), var(--shadow);
+  flex-shrink: 0;
+}
+
+.contact-portrait-caption {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.contact-portrait-caption strong {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.contact-portrait-caption span {
+  font-size: .82rem;
+  color: var(--text-muted);
+}
+
 .contact-info-card {
   background: var(--surface);
   border: 1px solid var(--border-light);
