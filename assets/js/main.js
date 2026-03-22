@@ -192,6 +192,15 @@
 
       player.classList.toggle('is-open', opening);
       btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+
+      /* Auto-play when opening */
+      if (opening) {
+        var playBtn = player.querySelector('.ap-play-btn');
+        if (playBtn) playBtn.click();
+      } else {
+        var audio = player.querySelector('audio');
+        if (audio) audio.pause();
+      }
     });
   });
 })();
