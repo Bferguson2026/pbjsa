@@ -1634,7 +1634,44 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .video-sound-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 /* ============================================================
-   ── 26. PINK EXPANSION ─────────────────────────────────────
+   ── 26. REAL ASSETS ────────────────────────────────────────
+   ============================================================ */
+
+/* Header / footer logo image */
+.site-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+.footer-brand .site-logo {
+  filter: brightness(0) invert(1);
+  opacity: .88;
+}
+
+/* Hero panel photo (Brittany headshot fills the right panel) */
+.hero-panel-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* About page portrait */
+.about-portrait {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   ── 27. PINK EXPANSION ─────────────────────────────────────
    Spreads the pink accent throughout the whole site.
    ============================================================ */
 
