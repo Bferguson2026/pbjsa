@@ -2533,55 +2533,52 @@ body.splash-active { overflow: hidden; }
 /* ── FAQ Page ────────────────────────────────────────────── */
 .faq-layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 3rem;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
   align-items: start;
 }
 
-/* Sidebar category nav */
+/* Sidebar category nav — minimal left-rail style */
 .faq-cat-nav {
   position: sticky;
   top: 6rem;
-  background: var(--surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
 }
 
-.faq-cat-nav-title {
-  font-size: .7rem;
+.faq-cat-label {
+  font-size: .68rem;
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin: 0 0 .9rem;
+  opacity: .6;
+  margin: 0 0 1rem 1.1rem;
 }
 
-.faq-cat-list {
+.faq-cat-nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .15rem;
+  border-left: 2px solid var(--border-light);
 }
 
-.faq-cat-list a {
+.faq-cat-nav li { margin: 0; }
+
+.faq-cat-nav a {
   display: block;
   font-size: .875rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  padding: .45rem .75rem;
-  border-radius: var(--radius-sm);
-  transition: background .15s, color .15s;
+  padding: .55rem 0 .55rem 1.1rem;
+  border-left: 2px solid transparent;
+  margin-left: -2px;
+  transition: color .15s, border-color .15s;
 }
 
-.faq-cat-list a:hover,
-.faq-cat-list a:focus-visible {
-  background: var(--surface-2);
-  color: var(--accent);
+.faq-cat-nav a:hover,
+.faq-cat-nav a:focus-visible {
+  color: var(--accent-dark);
+  border-left-color: var(--accent-light);
 }
 
 /* FAQ groups */
@@ -2594,41 +2591,41 @@ body.splash-active { overflow: hidden; }
 .faq-group-title {
   display: flex;
   align-items: center;
-  gap: .6rem;
-  font-size: 1.1rem;
+  gap: .75rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--text);
-  margin: 0 0 1rem;
-  padding-bottom: .75rem;
-  border-bottom: 2px solid var(--border-light);
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin: 0 0 1.25rem;
 }
 
 .faq-group-icon {
-  width: 32px; height: 32px;
-  background: var(--surface-2);
-  border-radius: 8px;
+  width: 28px; height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--accent);
+  color: var(--accent-light);
+  opacity: .9;
 }
 
 /* Accordion items */
 .faq-item {
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   background: var(--surface);
-  margin-bottom: .5rem;
+  margin-bottom: .6rem;
   overflow: hidden;
-  transition: box-shadow .15s;
+  transition: box-shadow .2s, border-color .2s;
 }
 
 .faq-item:last-child { margin-bottom: 0; }
 
 .faq-item[open] {
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow);
   border-color: var(--border);
+  border-left: 3px solid var(--accent-light);
 }
 
 .faq-question {
@@ -2636,7 +2633,7 @@ body.splash-active { overflow: hidden; }
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
+  padding: 1.1rem 1.4rem;
   font-size: .95rem;
   font-weight: 600;
   color: var(--text);
@@ -2688,21 +2685,29 @@ body.splash-active { overflow: hidden; }
   }
   .faq-cat-nav {
     position: static;
+    border-left: none;
+    padding-bottom: .5rem;
+  }
+  .faq-cat-label { display: none; }
+  .faq-cat-nav ul {
+    border-left: none;
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
-    padding: 1rem;
+    gap: .4rem;
   }
-  .faq-cat-nav-title { display: none; }
-  .faq-cat-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: .35rem;
-  }
-  .faq-cat-list a {
+  .faq-cat-nav a {
     font-size: .8rem;
-    padding: .35rem .65rem;
-    background: var(--surface-2);
+    padding: .35rem .85rem;
+    border-left: none;
+    border: 1px solid var(--border);
     border-radius: var(--radius-pill);
+    background: var(--surface);
+    margin-left: 0;
+  }
+  .faq-cat-nav a:hover,
+  .faq-cat-nav a:focus-visible {
+    background: var(--surface-2);
+    border-color: var(--accent-light);
+    border-left-color: var(--accent-light);
   }
 }
