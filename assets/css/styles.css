@@ -1632,3 +1632,82 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border-color: rgba(255,255,255,.35);
 }
 .video-sound-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* ============================================================
+   ── 26. PINK EXPANSION ─────────────────────────────────────
+   Spreads the pink accent throughout the whole site.
+   ============================================================ */
+
+/* All eyebrow labels go pink */
+.eyebrow { color: var(--pink); }
+
+/* Eyebrow on dark backgrounds — lighter pink */
+.section--dark .eyebrow { color: var(--pink-mid); }
+
+/* Default section decorative rule — pink */
+.section-rule { background: var(--pink); }
+
+/* Hero inline stats — pink numbers */
+.hero-stat-val { color: var(--pink-mid); }
+
+/* Service card hover — pink left accent bar */
+.service-card:hover { border-left-color: var(--pink); }
+
+/* Service icon — pink tint on hover */
+.service-card:hover .service-icon {
+  background: var(--pink-light);
+  color: var(--pink);
+}
+
+/* Outlined step numbers — pink stroke */
+.step-num-outline { -webkit-text-stroke-color: var(--pink); }
+
+/* Quote card avatars — pink gradient */
+.quote-avatar {
+  background: linear-gradient(135deg, var(--pink-mid), var(--pink));
+}
+
+/* Quote marks on dark section — pink */
+.section--dark .quote-card::before { color: var(--pink-mid); opacity: .4; }
+
+/* Credential dots — pink */
+.cred-dot { background: var(--pink); }
+
+/* Blog tags — pink pill */
+.blog-card-tag {
+  color: var(--pink);
+  background: var(--pink-light);
+}
+.blog-card h2 a:hover { color: var(--pink); }
+
+/* Form focus border — pink */
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(196, 117, 140, .14);
+}
+
+/* Form required asterisk — pink */
+.form-field label abbr { color: var(--pink); }
+
+/* Footer contact icons — pink */
+.footer-contact-item svg { color: var(--pink-mid); }
+
+/* Footer nav active link — pink */
+.footer-nav-list a[aria-current="page"] { color: var(--pink-mid); }
+
+/* About page portrait blob — soft pink */
+.portrait-editorial::before { background: var(--pink-light); }
+
+/* Price card list checkmarks — pink for all cards */
+.price-card ul li::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23C4758C'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z'/%3E%3C/svg%3E");
+}
+
+/* Nav active link — pink underline dot */
+.nav-list a[aria-current="page"] {
+  color: var(--pink);
+  background: var(--pink-light);
+}
+.nav-list a:hover { color: var(--pink); }
