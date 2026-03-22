@@ -751,6 +751,79 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .pricing-copy h2 { margin-top: 1.5rem; }
 .pricing-copy p { color: var(--text-muted); }
 
+/* ── Why Choose PBJ ───────────────────────────────────────── */
+.why-choose-section { background: var(--surface-2); }
+
+.why-choose-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.why-choose-title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  margin: .4rem 0 .9rem;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.why-choose-lead {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.why-choose-card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.why-choose-card-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #C4896A 0%, #8B4D2F 100%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  margin-bottom: 1.1rem;
+}
+.why-choose-card-icon svg { width: 24px; height: 24px; }
+
+.why-choose-card h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 .85rem;
+  color: var(--text);
+}
+
+.why-choose-card p {
+  color: var(--text-muted);
+  font-size: .95rem;
+  line-height: 1.7;
+  margin: 0 0 .75rem;
+}
+.why-choose-card p:last-child { margin-bottom: 0; }
+
+@media (max-width: 680px) {
+  .why-choose-grid { grid-template-columns: 1fr; }
+  .why-choose-title { font-size: 2.4rem; }
+}
+
 /* ── 16. About ────────────────────────────────────────────── */
 .about-grid {
   display: grid;
