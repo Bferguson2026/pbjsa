@@ -219,7 +219,8 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 248, 244, .92);
+  background: linear-gradient(rgba(250, 248, 244, .90), rgba(250, 248, 244, .90)),
+              url('../img/header-image.png') center / cover no-repeat;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
@@ -2168,14 +2169,16 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* Header / footer logo image */
 .site-logo {
-  height: 260px;
+  height: 130px;
   width: auto;
   display: block;
+  transform: scale(2);
+  transform-origin: left center;
   position: relative;
   z-index: 1;
 }
 
-/* Allow logo to bleed outside the header without shifting nav */
+/* Allow scaled logo to bleed outside the header without shifting nav */
 .site-header { overflow: visible; }
 .brand { overflow: visible; }
 
@@ -2183,6 +2186,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   filter: brightness(0) invert(1);
   opacity: .9;
   height: 130px;
+  transform: none;
 }
 
 /* Hero panel photo (Brittany headshot fills the right panel) */
