@@ -826,6 +826,181 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   color: var(--text-muted);
 }
 
+/* ── Audio Player ─────────────────────────────────────────── */
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.btn-listen {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .52rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-size: .875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .18s, color .18s, border-color .18s;
+  line-height: 1;
+}
+.btn-listen:hover,
+.btn-listen[aria-expanded="true"] {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-listen svg { flex-shrink: 0; }
+
+.audio-player {
+  margin-top: .75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: .85rem 1rem;
+  display: none;
+  animation: ap-expand .2s ease;
+}
+.audio-player.is-open { display: block; }
+
+@keyframes ap-expand {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ap-controls {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.ap-play-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s, transform .12s;
+}
+.ap-play-btn:hover { background: var(--accent-dark); transform: scale(1.07); }
+.ap-play-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.ap-timeline {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-width: 0;
+}
+
+.ap-time {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 34px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ap-progress {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  cursor: pointer;
+  outline: none;
+  min-width: 0;
+}
+.ap-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.08);
+  transition: transform .12s;
+}
+.ap-progress:hover::-webkit-slider-thumb { transform: scale(1.2); }
+.ap-progress::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+}
+.ap-progress:focus-visible { outline: 2px solid var(--accent); }
+
+.ap-vol {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-shrink: 0;
+}
+
+.ap-vol-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: color .15s;
+}
+.ap-vol-btn:hover { color: var(--accent); }
+.ap-vol-btn:focus-visible { outline: 2px solid var(--accent); border-radius: 3px; }
+
+.ap-vol-range {
+  width: 68px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  cursor: pointer;
+  outline: none;
+}
+.ap-vol-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+.ap-vol-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+}
+
+/* Article-page top player — slightly more prominent */
+.article-player { margin-bottom: 2rem; }
+.article-player .audio-player { display: block; border-color: var(--accent-light); }
+
+@media (max-width: 500px) {
+  .ap-vol { display: none; }
+}
+
 /* Maps address trigger + popover */
 .maps-trigger {
   position: relative;

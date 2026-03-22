@@ -74,6 +74,128 @@
 
 })();
 
+/* ── Audio Players ────────────────────────────────────────── */
+(function () {
+  function fmt(secs) {
+    if (!secs || isNaN(secs)) return '0:00';
+    var m = Math.floor(secs / 60);
+    var s = Math.floor(secs % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function fillTrack(range, pct) {
+    range.style.background =
+      'linear-gradient(to right, var(--accent) ' + pct + '%, var(--border) ' + pct + '%)';
+  }
+
+  function initPlayer(wrap) {
+    var audio     = wrap.querySelector('audio');
+    var playBtn   = wrap.querySelector('.ap-play-btn');
+    var playIcon  = wrap.querySelector('.ap-play-icon');
+    var pauseIcon = wrap.querySelector('.ap-pause-icon');
+    var progress  = wrap.querySelector('.ap-progress');
+    var curEl     = wrap.querySelector('.ap-current');
+    var durEl     = wrap.querySelector('.ap-duration');
+    var volBtn    = wrap.querySelector('.ap-vol-btn');
+    var volRange  = wrap.querySelector('.ap-vol-range');
+
+    if (!audio || !playBtn) return;
+
+    audio.addEventListener('loadedmetadata', function () {
+      durEl.textContent = fmt(audio.duration);
+      progress.max = audio.duration;
+    });
+
+    audio.addEventListener('timeupdate', function () {
+      curEl.textContent = fmt(audio.currentTime);
+      progress.value = audio.currentTime;
+      fillTrack(progress, (audio.currentTime / audio.duration) * 100 || 0);
+    });
+
+    audio.addEventListener('ended', function () {
+      playIcon.style.display = '';
+      pauseIcon.style.display = 'none';
+      playBtn.setAttribute('aria-label', 'Play');
+      audio.currentTime = 0;
+      fillTrack(progress, 0);
+    });
+
+    playBtn.addEventListener('click', function () {
+      if (audio.paused) {
+        /* Pause every other player */
+        document.querySelectorAll('.audio-player audio').forEach(function (a) {
+          if (a !== audio) {
+            a.pause();
+            var pw = a.closest('.audio-player');
+            if (pw) {
+              pw.querySelector('.ap-play-icon').style.display = '';
+              pw.querySelector('.ap-pause-icon').style.display = 'none';
+              pw.querySelector('.ap-play-btn').setAttribute('aria-label', 'Play');
+            }
+          }
+        });
+        audio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = '';
+        playBtn.setAttribute('aria-label', 'Pause');
+      } else {
+        audio.pause();
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
+        playBtn.setAttribute('aria-label', 'Play');
+      }
+    });
+
+    progress.addEventListener('input', function () {
+      audio.currentTime = progress.value;
+    });
+
+    if (volBtn && volRange) {
+      fillTrack(volRange, 100);
+      volRange.addEventListener('input', function () {
+        audio.volume = volRange.value;
+        audio.muted = audio.volume === 0;
+        fillTrack(volRange, volRange.value * 100);
+      });
+      volBtn.addEventListener('click', function () {
+        audio.muted = !audio.muted;
+        var v = audio.muted ? 0 : (audio.volume || 1);
+        volRange.value = v;
+        fillTrack(volRange, v * 100);
+      });
+    }
+  }
+
+  /* Init all players on page (article-page players are always visible) */
+  document.querySelectorAll('.audio-player').forEach(initPlayer);
+
+  /* Toggle collapsible players (blog index cards) */
+  document.querySelectorAll('.btn-listen').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('aria-controls');
+      var player = document.getElementById(id);
+      if (!player) return;
+
+      var opening = !player.classList.contains('is-open');
+
+      /* Close all other collapsible players */
+      document.querySelectorAll('.audio-player.is-open').forEach(function (p) {
+        if (p !== player) {
+          p.classList.remove('is-open');
+          var a = p.querySelector('audio');
+          if (a) a.pause();
+          document.querySelectorAll('[aria-controls="' + p.id + '"]').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+
+      player.classList.toggle('is-open', opening);
+      btn.setAttribute('aria-expanded', opening ? 'true' : 'false');
+    });
+  });
+})();
+
 /* ── Maps Address Popovers ────────────────────────────────── */
 (function () {
   var triggers = document.querySelectorAll('.maps-trigger');
