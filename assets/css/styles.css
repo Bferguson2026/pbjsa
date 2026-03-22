@@ -917,15 +917,6 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   align-items: center;
   gap: .35rem;
 }
-.chat-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 6px rgba(74,222,128,.8);
-  animation: status-pulse 2.4s ease-in-out infinite;
-}
-@keyframes status-pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
 
 .chat-close {
   background: none;
