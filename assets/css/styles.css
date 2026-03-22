@@ -2236,9 +2236,13 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* Outlined step numbers — pink stroke */
 .step-num-outline { -webkit-text-stroke-color: var(--pink); }
 
-/* Quote card avatars — pink gradient */
+/* Quote card avatars — pink gradient (text initials fallback) */
 .quote-avatar {
   background: linear-gradient(135deg, var(--pink-mid), var(--pink));
+}
+/* Image avatars: no gradient background */
+img.quote-avatar {
+  background: #fff;
 }
 
 /* Quote marks on dark section — pink */
