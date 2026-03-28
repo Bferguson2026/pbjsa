@@ -1,0 +1,6 @@
+name = "pbj-chat"
+main = "chat-worker.js"
+compatibility_date = "2024-01-01"
+
+# After deploying, add your API key as a secret (do NOT put it here):
+# npx wrangler secret put ANTHROPIC_API_KEY
