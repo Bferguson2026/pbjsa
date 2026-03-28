@@ -634,10 +634,10 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .price-card {
-  background: var(--surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  padding: 1.75rem;
+  background: #FBF3E2;
+  border: 3px solid #C4882A;
+  border-radius: 48% 48% 8px 8px / 38px 38px 8px 8px;
+  padding: 2.5rem 1.75rem 1.75rem;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
@@ -650,13 +650,13 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .price-card--featured {
   border-color: var(--gold);
-  border-width: 2px;
-  background: var(--gold-bg);
-  box-shadow: 0 8px 32px rgba(184, 136, 42, .15);
+  border-width: 3px;
+  background: #F5E8C4;
+  box-shadow: 0 8px 32px rgba(184, 136, 42, .22);
   position: relative;
 }
 .price-card--featured:hover {
-  box-shadow: 0 16px 48px rgba(184, 136, 42, .22);
+  box-shadow: 0 16px 48px rgba(184, 136, 42, .30);
 }
 
 .price-badge {
@@ -2302,20 +2302,15 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* Header / footer logo image */
 .site-logo {
-  height: 130px;
+  height: 48px;
   width: auto;
   display: block;
-  transform: scale(2);
-  transform-origin: left center;
 }
-
-.site-header { overflow: hidden; }
 
 .footer-brand .site-logo {
   filter: brightness(0) invert(1);
   opacity: .9;
-  height: 130px;
-  transform: none;
+  height: 44px;
 }
 
 /* Hero panel photo (Brittany headshot fills the right panel) */
