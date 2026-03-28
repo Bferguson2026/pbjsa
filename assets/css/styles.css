@@ -2260,8 +2260,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   box-shadow: 0 4px 20px rgba(0,0,0,.35);
 }
 .btn--inverse:hover {
-  background: #F0E8DE;
-  color: var(--accent-dark);
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(216, 108, 151, .45);
 }
 
 .btn-ghost {
@@ -2270,9 +2271,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border: 2px solid rgba(248,245,240,.22);
 }
 .btn-ghost:hover {
-  background: rgba(248,245,240,.08);
+  background: var(--pink);
   color: #fff;
-  border-color: rgba(248,245,240,.5);
+  border-color: var(--pink);
 }
 
 /* ── Hero inline stats ───────────────────────────────────── */
