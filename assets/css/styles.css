@@ -722,6 +722,44 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .price-card--featured ul li::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23B8882A'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z'/%3E%3C/svg%3E");
 }
+
+/* Feature group labels (e.g. "Just the Crust Plus:") */
+.price-card ul > li.feature-group-label {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text-body);
+  letter-spacing: .01em;
+  margin-top: .3rem;
+}
+.price-card ul > li.feature-group-label::before {
+  display: none;
+}
+/* Sub-list inside a feature group */
+.price-card ul > li.feature-group-label > ul {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin: .4rem 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  flex: unset;
+}
+.price-card ul > li.feature-group-label > ul > li {
+  display: flex;
+  gap: .5rem;
+  align-items: flex-start;
+  font-size: .84rem;
+  color: var(--text-muted);
+}
+.price-card ul > li.feature-group-label > ul > li::before {
+  content: '–';
+  color: var(--accent);
+  flex-shrink: 0;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
 .price-card .price-note {
   font-size: .82rem;
   color: var(--text-muted);
