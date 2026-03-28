@@ -23,6 +23,7 @@
   --dark-teal:     #0D2B35;
   --dark-teal-2:   #091E26;
   --pink:          #D86C97;
+  --pink-dark:     #B54D7A;
   --pink-mid:      #E8A0BC;
   --pink-light:    #FCEEF5;
   --border:        #DDD6CF;
@@ -178,9 +179,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   box-shadow: 0 4px 16px rgba(139, 77, 47, .28);
 }
 .btn:hover {
-  background: var(--accent-dark);
+  background: var(--pink);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(139, 77, 47, .36);
+  box-shadow: 0 6px 20px rgba(216, 108, 151, .38);
   transform: translateY(-1px);
 }
 .btn:active { transform: translateY(0); }
@@ -192,9 +193,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   box-shadow: var(--shadow-sm);
 }
 .btn-secondary:hover {
-  background: var(--surface-2);
-  color: var(--text);
-  border-color: var(--accent-light);
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  border-color: var(--pink);
   transform: translateY(-1px);
 }
 
@@ -204,8 +205,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   box-shadow: 0 4px 16px rgba(184, 136, 42, .32);
 }
 .btn-gold:hover {
-  background: #9a7020;
+  background: var(--pink);
   color: #fff;
+  box-shadow: 0 6px 20px rgba(216, 108, 151, .38);
   transform: translateY(-1px);
 }
 
@@ -1416,7 +1418,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn-listen:hover,
 .btn-listen[aria-expanded="true"] {
-  background: var(--accent);
+  background: var(--pink);
   color: #fff;
 }
 .btn-listen svg { flex-shrink: 0; }
