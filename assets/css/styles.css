@@ -779,20 +779,15 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .plans-section { position: relative; overflow: visible; }
 
 .bread-char-wrap {
-  position: absolute;
-  bottom: -20px;
-  right: -10px;
-  z-index: 10;
+  position: fixed;
+  z-index: 1000;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(28px) scale(0.85);
-  transition: opacity .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+  transition: opacity .18s ease;
 }
 .bread-char-wrap.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-  animation: bread-bob 3s .4s ease-in-out infinite;
+  animation: bread-bob 3s ease-in-out infinite;
 }
 
 @keyframes bread-bob {

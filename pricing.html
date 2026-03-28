@@ -204,61 +204,55 @@
 
         <!-- Bread character -->
         <div class="bread-char-wrap" aria-hidden="true">
-          <svg viewBox="0 0 250 310" width="210" height="260" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 200 310" width="160" height="248" xmlns="http://www.w3.org/2000/svg">
+            <!-- Jelly blob on top of head -->
+            <ellipse cx="100" cy="68" rx="42" ry="16" fill="#E8186A"/>
+            <ellipse cx="88"  cy="60" rx="14" ry="6"  fill="#FF60A0" opacity="0.5"/>
+            <!-- Left jelly drip -->
+            <path fill="#E8186A">
+              <animate attributeName="d"
+                values="M72,78 Q70,92 72,106 Q74,112 76,111 Q78,112 78,106 Q80,92 76,78 Z;
+                        M72,78 Q69,96 71,114 Q73,122 76,121 Q78,122 79,114 Q81,96 78,78 Z;
+                        M72,78 Q70,92 72,106 Q74,112 76,111 Q78,112 78,106 Q80,92 76,78 Z"
+                dur="2.6s" repeatCount="indefinite"/>
+            </path>
+            <ellipse cx="75" cy="115" rx="4" ry="5" fill="#E8186A">
+              <animate attributeName="cy"      values="112;112;150;150" dur="2.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;1;0.5;0"       dur="2.6s" repeatCount="indefinite"/>
+            </ellipse>
+            <!-- Right jelly drip -->
+            <path fill="#E8186A">
+              <animate attributeName="d"
+                values="M122,78 Q124,90 122,103 Q120,109 118,108 Q116,109 117,103 Q115,90 120,78 Z;
+                        M122,78 Q125,94 123,110 Q121,118 118,117 Q116,118 116,110 Q114,94 118,78 Z;
+                        M122,78 Q124,90 122,103 Q120,109 118,108 Q116,109 117,103 Q115,90 120,78 Z"
+                dur="2.6s" begin="1s" repeatCount="indefinite"/>
+            </path>
+            <ellipse cx="119" cy="112" rx="4" ry="5" fill="#E8186A">
+              <animate attributeName="cy"      values="109;109;147;147" dur="2.6s" begin="1s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;1;0.5;0"       dur="2.6s" begin="1s" repeatCount="indefinite"/>
+            </ellipse>
             <!-- Feet -->
-            <rect x="94"  y="256" width="34" height="28" rx="13" fill="#BF7520"/>
-            <rect x="148" y="256" width="34" height="28" rx="13" fill="#BF7520"/>
+            <rect x="60"  y="256" width="34" height="28" rx="13" fill="#BF7520"/>
+            <rect x="106" y="256" width="34" height="28" rx="13" fill="#BF7520"/>
             <!-- Outer crust -->
-            <path d="M92,256 Q66,256 66,230 L66,170 Q64,132 80,110 Q94,90 118,80 Q134,74 152,74 Q170,74 186,80 Q210,90 224,110 Q240,132 238,170 L238,230 Q238,256 212,256 Z" fill="#BF7520"/>
+            <path d="M58,256 Q34,256 34,230 L34,170 Q32,132 48,110 Q62,90 84,80 Q98,74 100,74 Q102,74 116,80 Q138,90 152,110 Q168,132 166,170 L166,230 Q166,256 142,256 Z" fill="#BF7520"/>
             <!-- Crust rim -->
-            <path d="M102,246 Q78,246 78,224 L78,168 Q76,134 90,114 Q104,96 126,88 Q140,83 152,83 Q164,83 178,88 Q200,96 214,114 Q228,134 226,168 L226,224 Q226,246 202,246 Z" fill="#DD9030"/>
+            <path d="M68,246 Q46,246 46,224 L46,168 Q44,134 58,114 Q70,96 90,88 Q100,84 100,84 Q100,84 110,88 Q130,96 142,114 Q156,134 154,168 L154,224 Q154,246 132,246 Z" fill="#DD9030"/>
             <!-- Cream interior -->
-            <path d="M112,236 Q90,236 90,216 L90,166 Q88,136 101,118 Q114,102 134,96 Q143,93 152,93 Q161,93 170,96 Q190,102 203,118 Q216,136 214,166 L214,216 Q214,236 192,236 Z" fill="#FFF4DC"/>
+            <path d="M78,236 Q58,236 58,216 L58,166 Q56,136 69,118 Q80,102 98,96 Q100,95 100,95 Q100,95 102,96 Q120,102 131,118 Q144,136 142,166 L142,216 Q142,236 122,236 Z" fill="#FFF4DC"/>
             <!-- Eyes -->
-            <circle cx="132" cy="158" r="18" fill="#160800"/>
-            <circle cx="137" cy="152" r="6"  fill="white"/>
-            <circle cx="172" cy="158" r="18" fill="#160800"/>
-            <circle cx="177" cy="152" r="6"  fill="white"/>
+            <circle cx="83"  cy="158" r="17" fill="#160800"/>
+            <circle cx="88"  cy="152" r="5.5" fill="white"/>
+            <circle cx="117" cy="158" r="17" fill="#160800"/>
+            <circle cx="122" cy="152" r="5.5" fill="white"/>
             <!-- Cheeks -->
-            <ellipse cx="112" cy="175" rx="16" ry="11" fill="#E8608A" opacity="0.48"/>
-            <ellipse cx="192" cy="175" rx="16" ry="11" fill="#E8608A" opacity="0.48"/>
+            <ellipse cx="68"  cy="174" rx="14" ry="10" fill="#E8608A" opacity="0.48"/>
+            <ellipse cx="132" cy="174" rx="14" ry="10" fill="#E8608A" opacity="0.48"/>
             <!-- Open smile -->
-            <path d="M125,185 Q152,212 179,185 L174,196 Q152,210 130,196 Z" fill="#160800"/>
+            <path d="M78,185 Q100,210 122,185 L118,195 Q100,208 82,195 Z" fill="#160800"/>
             <!-- Teeth -->
-            <path d="M130,192 Q152,204 174,192 L171,197 Q152,205 133,197 Z" fill="white"/>
-            <!-- Left arm -->
-            <path d="M72,200 Q48,190 38,172" stroke="#BF7520" stroke-width="22" fill="none" stroke-linecap="round"/>
-            <!-- Knife group -->
-            <g transform="translate(32,163) rotate(-44)">
-              <!-- Butter knife blade (flat spreader with rounded tip) -->
-              <path d="M-8,6 L-8,-44 Q-8,-58 0,-58 Q8,-58 8,-44 L8,6 Z" fill="#D4D4D4" stroke="#AAAAAA" stroke-width="0.8"/>
-              <!-- Blade shine -->
-              <line x1="-3" y1="2" x2="-3" y2="-52" stroke="white" stroke-width="2" opacity="0.45" stroke-linecap="round"/>
-              <!-- Guard -->
-              <rect x="-14" y="6" width="28" height="9" rx="4" fill="#A08820"/>
-              <!-- Handle -->
-              <rect x="-9" y="15" width="18" height="36" rx="7" fill="#7B4210"/>
-              <line x1="-9" y1="25" x2="9" y2="25" stroke="#4A2210" stroke-width="1.5" opacity="0.4"/>
-              <line x1="-9" y1="35" x2="9" y2="35" stroke="#4A2210" stroke-width="1.5" opacity="0.4"/>
-              <!-- Jelly blob -->
-              <ellipse cx="0" cy="-34" rx="15" ry="11" fill="#E8186A"/>
-              <ellipse cx="-4" cy="-40" rx="5" ry="3.5" fill="#FF60A0" opacity="0.55"/>
-              <!-- Jelly drip (SMIL stretch animation) -->
-              <path fill="#E8186A">
-                <animate attributeName="d"
-                  values="M-5,-21 Q-7,-8 -5,3 Q-2,8 0,7 Q2,8 5,3 Q7,-8 5,-21 Z;
-                          M-5,-21 Q-8,-3 -5,13 Q-2,19 0,18 Q2,19 5,13 Q8,-3 5,-21 Z;
-                          M-5,-21 Q-7,-8 -5,3 Q-2,8 0,7 Q2,8 5,3 Q7,-8 5,-21 Z"
-                  dur="2.5s" repeatCount="indefinite"/>
-              </path>
-              <!-- Jelly drop (SMIL fall animation) -->
-              <ellipse cx="0" cy="14" rx="5" ry="6" fill="#E8186A">
-                <animate attributeName="cy"      values="14;14;58;58"  dur="2.5s" repeatCount="indefinite"/>
-                <animate attributeName="rx"      values="5;5;3;3"      dur="2.5s" repeatCount="indefinite"/>
-                <animate attributeName="ry"      values="6;6;9;9"      dur="2.5s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="1;1;0.6;0"    dur="2.5s" repeatCount="indefinite"/>
-              </ellipse>
-            </g>
+            <path d="M82,191 Q100,202 118,191 L116,196 Q100,204 84,196 Z" fill="white"/>
           </svg>
         </div>
 
