@@ -427,10 +427,10 @@
   if (!cards.length) return;
 
   var BG    = '#F6F2EF';
-  var JELLY = '#C8185A';
+  var JELLY = '#4A1A78';
 
   var wrap = document.createElement('div');
-  wrap.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10;pointer-events:none;mix-blend-mode:multiply;';
+  wrap.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10;pointer-events:none;mix-blend-mode:multiply;opacity:.72;';
   document.body.appendChild(wrap);
 
   var inner = document.createElement('div');
