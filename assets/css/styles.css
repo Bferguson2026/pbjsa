@@ -2960,10 +2960,13 @@ body.splash-active { overflow: hidden; }
 
 /* Mobile: hide orbit, show grid */
 .orbit-mobile { display: none; }
+.orbit-lead--mobile { display: none; }
 
 @media (max-width: 880px) {
   .orbit-layout { display: none; }
   .orbit-mobile  { display: grid; }
+  .orbit-lead--desktop { display: none; }
+  .orbit-lead--mobile  { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {
