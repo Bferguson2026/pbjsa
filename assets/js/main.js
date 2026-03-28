@@ -421,3 +421,31 @@
   });
 })();
 
+/* ── Bread character hover reveal ────────────────────────────── */
+(function () {
+  var charWrap = document.querySelector('.bread-char-wrap');
+  if (!charWrap) return;
+
+  var buttons = document.querySelectorAll('.price-card .btn-secondary, .price-card .btn-gold');
+  var hideTimer = null;
+
+  function show() {
+    clearTimeout(hideTimer);
+    charWrap.classList.add('is-visible');
+  }
+
+  function scheduleHide() {
+    hideTimer = setTimeout(function () {
+      charWrap.classList.remove('is-visible');
+    }, 500);
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('mouseenter', show);
+    btn.addEventListener('mouseleave', scheduleHide);
+  });
+
+  charWrap.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+  charWrap.addEventListener('mouseleave', scheduleHide);
+})();
+
