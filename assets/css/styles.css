@@ -2878,7 +2878,7 @@ body.splash-active { overflow: hidden; }
   width: 100%; height: 100%;
   border-radius: 50%;
   background: var(--gold-bg);
-  border: 2px solid var(--gold);
+  border: 2px solid var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2896,9 +2896,9 @@ body.splash-active { overflow: hidden; }
 .orbit-node.is-active .orbit-node-inner,
 .orbit-node:hover    .orbit-node-inner,
 .orbit-node:focus-visible .orbit-node-inner {
-  background: #FDF0CC;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 5px rgba(184,136,42,.18), var(--shadow);
+  background: var(--pink-light);
+  border-color: var(--pink);
+  box-shadow: 0 0 0 5px rgba(216,108,151,.18), var(--shadow);
   transform: scale(1.18);
 }
 .orbit-node:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 50%; }
