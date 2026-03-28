@@ -2699,8 +2699,8 @@ body.splash-active { overflow: hidden; }
   pointer-events: none;
 }
 .orbit-ring--outer {
-  width: 480px; height: 480px;
-  border: 1px solid rgba(45,175,212,.18);
+  width: 400px; height: 400px;
+  border: 1px solid rgba(45,175,212,.22);
   animation: orbit-ring-cw 80s linear infinite;
 }
 .orbit-ring--mid { display: none; }
