@@ -421,24 +421,26 @@
   });
 })();
 
-/* ── Jelly slop on card hover (pricing page only) ────────── */
+/* ── Jelly knife-spread on card hover (pricing page only) ── */
 (function () {
   var cards = document.querySelectorAll('.price-card');
-  if (!cards.length) return;                 // only runs on pricing page
+  if (!cards.length) return;
 
   var canvas = document.createElement('canvas');
   var ctx    = canvas.getContext('2d');
   canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10;pointer-events:none;';
   document.body.appendChild(canvas);
 
-  // jelly-slop chars: blobs, drips, splats
-  var BLOBS  = ['@', 'o', 'O', '0', 'Q', 'G'];
-  var DRIPS  = ['~', '≈', ',', ';', '.'];
-  var CELL   = 18;
-  var R      = 100;   // influence radius
-  var DECAY  = 0.84;
+  var DRIPS = ['~', '≈', ',', '~', ';'];
+  var BLOBS = ['o', 'O', '@', '0'];
+  var CELL  = 13;   // tight grid
+  var DECAY = 0.74; // fast fade when cursor stops
+  var KW    = 18;   // knife half-width (perpendicular)
+  var KL    = 42;   // knife trail length (behind cursor)
 
-  var cols, rows, energy, mouse = { x: -9999, y: -9999 };
+  var cols, rows, energy;
+  var mouse  = { x: -9999, y: -9999 };
+  var vel    = { x: 0, y: 0 };
   var active = false;
 
   function resize() {
@@ -455,56 +457,76 @@
     card.addEventListener('mouseenter', function () { active = true; });
     card.addEventListener('mouseleave', function () { active = false; });
   });
-  document.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+  document.addEventListener('mousemove', function (e) {
+    vel.x = e.clientX - mouse.x;
+    vel.y = e.clientY - mouse.y;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
 
   var tick = 0;
   (function loop() {
     requestAnimationFrame(loop);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font         = Math.round(CELL * 0.75) + 'px "Courier New",monospace';
+    ctx.font         = Math.round(CELL * 0.82) + 'px "Courier New",monospace';
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
 
     var mx = mouse.x, my = mouse.y, half = CELL * 0.5;
+    var speed = Math.sqrt(vel.x * vel.x + vel.y * vel.y);
+    var nx = speed > 0.5 ? vel.x / speed : 0;
+    var ny = speed > 0.5 ? vel.y / speed : 0;
 
     for (var i = 0, n = energy.length; i < n; i++) {
       var c  = i % cols;
       var r  = (i / cols) | 0;
       var px = c * CELL + half;
       var py = r * CELL + half;
-      var dx = px - mx, dy = py - my;
-      // slightly squash vertical so blobs spread wider than tall (jelly splat shape)
-      var dist = Math.sqrt(dx * dx * 0.7 + dy * dy * 1.4);
+      var dx = px - mx;
+      var dy = py - my;
 
-      var boost = active ? Math.max(0, 1 - dist / R) * 0.5 : 0;
+      // project cell onto stroke axis and perpendicular
+      var along = dx * nx + dy * ny;          // negative = behind cursor (trail)
+      var perp  = Math.abs(-dx * ny + dy * nx);
+
+      var boost = 0;
+      if (active && speed > 1.5 && perp < KW && along > -KL && along < 3) {
+        boost = speed * 0.06
+              * (1 - perp / KW)
+              * (1 - Math.max(0, along) / 6)  // strongest right at cursor tip
+              * (along < 0 ? (1 + along / KL) : 1); // taper the trail
+        boost = Math.min(boost, 0.65);
+      }
+
       energy[i] = Math.min(1, energy[i] * DECAY + boost);
 
       var e = energy[i];
       if (e < 0.04) continue;
 
       var ch, alpha, rgb;
-      if (e > 0.55) {
-        // dense centre — blobby core
-        ch    = BLOBS[(tick * 0 + i + (tick >> 3)) % BLOBS.length];
-        alpha = e * 0.38;
-        rgb   = '192,24,90';   // deep jelly red-pink
-      } else if (e > 0.22) {
-        // spreading edge — drippy
-        ch    = DRIPS[(tick + i * 3) % DRIPS.length];
-        alpha = e * 0.45;
-        rgb   = '216,108,151'; // mid pink
+      if (e > 0.5) {
+        ch    = BLOBS[(i + (tick >> 4)) % BLOBS.length];
+        alpha = e * 0.42;
+        rgb   = '192,24,90';
+      } else if (e > 0.2) {
+        ch    = DRIPS[(tick + i * 2) % DRIPS.length];
+        alpha = e * 0.48;
+        rgb   = '216,108,151';
       } else {
-        // outer fade — tiny drips
-        ch    = DRIPS[(i * 7) % DRIPS.length];
+        ch    = '~';
         alpha = e * 0.5;
-        rgb   = '45,175,212';  // teal accent
+        rgb   = '45,175,212';
       }
 
       ctx.fillStyle = 'rgba(' + rgb + ',' + alpha.toFixed(2) + ')';
       ctx.fillText(ch, px, py);
     }
 
+    // bleed velocity off each frame so trail tapers when cursor slows
+    vel.x *= 0.6;
+    vel.y *= 0.6;
     tick++;
   }());
 })();
