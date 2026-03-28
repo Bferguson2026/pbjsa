@@ -9,22 +9,22 @@
 /* ── 2. Design Tokens ────────────────────────────────────── */
 :root {
   /* Colors */
-  --bg:            #FAF8F4;
+  --bg:            #F6F2EF;
   --surface:       #FFFFFF;
-  --surface-2:     #F4EDE2;
-  --surface-3:     #EDE1D2;
+  --surface-2:     #EDE8E3;
+  --surface-3:     #E4DDD6;
   --text:          #1C1917;
   --text-muted:    #5C5248;
-  --accent:        #8B4D2F;
-  --accent-dark:   #6D3B22;
-  --accent-light:  #C4896A;
+  --accent:        #2DAFD4;
+  --accent-dark:   #1F8DAB;
+  --accent-light:  #7DD4E8;
   --gold:          #B8882A;
   --gold-bg:       #FDF6E3;
-  --pink:          #C4758C;
-  --pink-mid:      #DBA8B5;
-  --pink-light:    #F9EDF1;
-  --border:        #DDD3C7;
-  --border-light:  #EDE6DD;
+  --pink:          #D86C97;
+  --pink-mid:      #E8A0BC;
+  --pink-light:    #FCEEF5;
+  --border:        #DDD6CF;
+  --border-light:  #EDE8E3;
   --focus:         #1F6FEB;
 
   /* Layout */
