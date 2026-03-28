@@ -636,7 +636,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .price-card {
   background: #FBF3E2;
   border: 3px solid #C4882A;
-  border-radius: 48% 48% 8px 8px / 38px 38px 8px 8px;
+  border-radius: 38% 38% 18px 18px / 38% 38% 18px 18px;
   padding: 2.5rem 1.75rem 1.75rem;
   box-shadow: var(--shadow-sm);
   display: flex;
