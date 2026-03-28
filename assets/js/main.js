@@ -421,41 +421,4 @@
   });
 })();
 
-/* ── Bread character hover reveal ────────────────────────────── */
-(function () {
-  var charWrap = document.querySelector('.bread-char-wrap');
-  if (!charWrap) return;
-
-  var charW = 256;
-  var charH = 248;
-  var buttons = document.querySelectorAll('.price-card .btn-secondary, .price-card .btn-gold');
-
-  function show(btn) {
-    var rect = btn.getBoundingClientRect();
-    var top  = rect.top + (rect.height / 2) - (charH / 2);
-    var left = rect.right + 12;
-
-    /* flip left if not enough room */
-    if (left + charW > window.innerWidth - 8) {
-      left = rect.left - charW - 12;
-    }
-    /* clamp vertical */
-    top = Math.max(8, Math.min(top, window.innerHeight - charH - 8));
-
-    charWrap.style.top        = top + 'px';
-    charWrap.style.left       = left + 'px';
-    charWrap.style.transition = '';
-    charWrap.classList.add('is-visible');
-  }
-
-  function hide() {
-    charWrap.style.transition = 'none';
-    charWrap.classList.remove('is-visible');
-  }
-
-  buttons.forEach(function (btn) {
-    btn.addEventListener('mouseenter', function () { show(btn); });
-    btn.addEventListener('mouseleave', hide);
-  });
-})();
 
