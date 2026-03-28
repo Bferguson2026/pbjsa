@@ -3077,7 +3077,7 @@ body.splash-active { overflow: hidden; }
   list-style: none;
   margin: 0;
   padding: 0;
-  border-left: 2px solid var(--border-light);
+  border-left: 2px solid var(--pink-light);
 }
 
 .faq-cat-nav li { margin: 0; }
@@ -3091,13 +3091,15 @@ body.splash-active { overflow: hidden; }
   padding: .55rem 0 .55rem 1.1rem;
   border-left: 2px solid transparent;
   margin-left: -2px;
-  transition: color .15s, border-color .15s;
+  transition: color .15s, border-color .15s, background .15s;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .faq-cat-nav a:hover,
 .faq-cat-nav a:focus-visible {
-  color: var(--accent-dark);
-  border-left-color: var(--accent-light);
+  color: var(--pink);
+  border-left-color: var(--pink);
+  background: var(--pink-light);
 }
 
 /* FAQ groups */
@@ -3125,7 +3127,7 @@ body.splash-active { overflow: hidden; }
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--accent-light);
+  color: var(--pink);
   opacity: .9;
 }
 
@@ -3163,7 +3165,7 @@ body.splash-active { overflow: hidden; }
 
 .faq-question::-webkit-details-marker { display: none; }
 
-.faq-question:hover { color: var(--accent-dark); }
+.faq-question:hover { color: var(--pink); }
 
 .faq-question:focus-visible {
   outline: 3px solid var(--focus);
@@ -3173,7 +3175,7 @@ body.splash-active { overflow: hidden; }
 
 .faq-chevron {
   flex-shrink: 0;
-  color: var(--accent-light);
+  color: var(--pink);
   transition: transform .2s ease;
 }
 
