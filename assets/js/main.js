@@ -421,41 +421,44 @@
   });
 })();
 
-/* ── Jelly knife-spread on card hover (pricing page only) ── */
+/* ── Gooey jelly blob spread on card hover (pricing page only) ── */
 (function () {
   var cards = document.querySelectorAll('.price-card');
   if (!cards.length) return;
 
+  var BG    = '#F6F2EF';
+  var JELLY = '#C8185A';
+
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10;pointer-events:none;mix-blend-mode:multiply;';
+  document.body.appendChild(wrap);
+
+  var inner = document.createElement('div');
+  inner.style.cssText = 'position:relative;width:100%;height:100%;filter:blur(7px) contrast(22);';
+  wrap.appendChild(inner);
+
   var canvas = document.createElement('canvas');
-  var ctx    = canvas.getContext('2d');
-  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:10;pointer-events:none;';
-  document.body.appendChild(canvas);
+  canvas.style.cssText = 'display:block;';
+  inner.appendChild(canvas);
+  var ctx = canvas.getContext('2d');
 
-  var DRIPS = ['~', '≈', ',', '~', ';'];
-  var BLOBS = ['o', 'O', '@', '0'];
-  var CELL  = 13;   // tight grid
-  var DECAY = 0.74; // fast fade when cursor stops
-  var KW    = 18;   // knife half-width (perpendicular)
-  var KL    = 42;   // knife trail length (behind cursor)
-
-  var cols, rows, energy;
   var mouse  = { x: -9999, y: -9999 };
+  var prev   = { x: -9999, y: -9999 };
   var vel    = { x: 0, y: 0 };
   var active = false;
 
   function resize() {
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
-    cols   = Math.ceil(canvas.width  / CELL) + 1;
-    rows   = Math.ceil(canvas.height / CELL) + 1;
-    energy = new Float32Array(cols * rows);
+    ctx.fillStyle = BG;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
   window.addEventListener('resize', resize);
   resize();
 
   cards.forEach(function (card) {
-    card.addEventListener('mouseenter', function () { active = true; });
-    card.addEventListener('mouseleave', function () { active = false; });
+    card.addEventListener('mouseenter', function () { active = true; prev.x = -9999; });
+    card.addEventListener('mouseleave', function () { active = false; prev.x = -9999; });
   });
 
   document.addEventListener('mousemove', function (e) {
@@ -465,68 +468,41 @@
     mouse.y = e.clientY;
   });
 
-  var tick = 0;
   (function loop() {
     requestAnimationFrame(loop);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font         = Math.round(CELL * 0.82) + 'px "Courier New",monospace';
-    ctx.textAlign    = 'center';
-    ctx.textBaseline = 'middle';
+    // fade existing blobs each frame toward background
+    ctx.fillStyle = 'rgba(246,242,239,0.14)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    var mx = mouse.x, my = mouse.y, half = CELL * 0.5;
+    if (!active) { vel.x *= 0.7; vel.y *= 0.7; return; }
+
     var speed = Math.sqrt(vel.x * vel.x + vel.y * vel.y);
-    var nx = speed > 0.5 ? vel.x / speed : 0;
-    var ny = speed > 0.5 ? vel.y / speed : 0;
+    if (speed < 1.5) { vel.x *= 0.7; vel.y *= 0.7; return; }
 
-    for (var i = 0, n = energy.length; i < n; i++) {
-      var c  = i % cols;
-      var r  = (i / cols) | 0;
-      var px = c * CELL + half;
-      var py = r * CELL + half;
-      var dx = px - mx;
-      var dy = py - my;
+    var r = Math.min(4 + speed * 1.4, 18);
 
-      // project cell onto stroke axis and perpendicular
-      var along = dx * nx + dy * ny;          // negative = behind cursor (trail)
-      var perp  = Math.abs(-dx * ny + dy * nx);
-
-      var boost = 0;
-      if (active && speed > 1.5 && perp < KW && along > -KL && along < 3) {
-        boost = speed * 0.06
-              * (1 - perp / KW)
-              * (1 - Math.max(0, along) / 6)  // strongest right at cursor tip
-              * (along < 0 ? (1 + along / KL) : 1); // taper the trail
-        boost = Math.min(boost, 0.65);
+    ctx.fillStyle = JELLY;
+    if (prev.x > -999) {
+      var dist  = Math.sqrt((mouse.x - prev.x) * (mouse.x - prev.x) + (mouse.y - prev.y) * (mouse.y - prev.y));
+      var steps = Math.max(1, Math.ceil(dist / (r * 0.5)));
+      for (var s = 0; s <= steps; s++) {
+        var t  = s / steps;
+        var ix = prev.x + (mouse.x - prev.x) * t;
+        var iy = prev.y + (mouse.y - prev.y) * t;
+        ctx.beginPath();
+        ctx.arc(ix, iy, r * (0.75 + t * 0.25), 0, Math.PI * 2);
+        ctx.fill();
       }
-
-      energy[i] = Math.min(1, energy[i] * DECAY + boost);
-
-      var e = energy[i];
-      if (e < 0.04) continue;
-
-      var ch, alpha, rgb;
-      if (e > 0.5) {
-        ch    = BLOBS[(i + (tick >> 4)) % BLOBS.length];
-        alpha = e * 0.42;
-        rgb   = '192,24,90';
-      } else if (e > 0.2) {
-        ch    = DRIPS[(tick + i * 2) % DRIPS.length];
-        alpha = e * 0.48;
-        rgb   = '216,108,151';
-      } else {
-        ch    = '~';
-        alpha = e * 0.5;
-        rgb   = '45,175,212';
-      }
-
-      ctx.fillStyle = 'rgba(' + rgb + ',' + alpha.toFixed(2) + ')';
-      ctx.fillText(ch, px, py);
+    } else {
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, r, 0, Math.PI * 2);
+      ctx.fill();
     }
 
-    // bleed velocity off each frame so trail tapers when cursor slows
-    vel.x *= 0.6;
-    vel.y *= 0.6;
-    tick++;
+    prev.x = mouse.x;
+    prev.y = mouse.y;
+    vel.x *= 0.65;
+    vel.y *= 0.65;
   }());
 })();
