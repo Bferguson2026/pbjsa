@@ -691,7 +691,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .reviews-ticker .quote-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
 }
 .reviews-ticker .quote-card blockquote {
   display: -webkit-box;
@@ -723,7 +723,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .reviews-loading {
-  color: rgba(248,245,240,.45);
+  color: var(--text-muted);
   font-style: italic;
   padding: 2rem;
 }
@@ -733,11 +733,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .reviews-google-link a {
   font-size: .85rem;
-  color: rgba(248,245,240,.5);
+  color: var(--text-muted);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.reviews-google-link a:hover { color: #fff; }
+.reviews-google-link a:hover { color: var(--pink); }
 
 /* Review Modal */
 .review-modal-backdrop {
