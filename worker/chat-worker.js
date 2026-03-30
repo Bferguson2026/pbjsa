@@ -52,7 +52,7 @@ Q: How do I get started?
 A: Reach out through our Contact page, call 904-708-2411, or email bferguson@pbjsa.com. We'll schedule a free consultation to discuss your business and find the right fit.
 
 Q: Do you offer a free consultation?
-A: Yes — a complimentary discovery call with no pressure and no commitment. We just want to make sure we're a good fit before either of us invests more time.
+A: Yes — a complimentary discovery call with no pressure. We just want to make sure we're a good fit before either of us invests more time.
 
 Q: What do I need to bring to my first meeting?
 A: Just come as you are. It helps to have a general sense of your bookkeeping situation, your business size, and any goals or concerns. We'll take it from there.

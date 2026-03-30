@@ -554,7 +554,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   flex-shrink: 0;
 }
 .service-icon svg { width: 24px; height: 24px; }
-.service-icon:has(.service-icon-img) { background: none; width: 56px; height: 56px; }
+.service-icon:has(.service-icon-img) { background: none; width: 72px; height: 72px; }
 .service-icon-img { width: 100%; height: 100%; object-fit: contain; }
 
 .service-card h2 {
