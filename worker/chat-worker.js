@@ -31,7 +31,7 @@ RULES:
 SITE PAGES:
 - /index.html       → Home
 - /about.html       → About Brittany
-- /services.html    → All 7 services
+- /services.html    → All areas we offer
 - /pricing.html     → Package pricing
 - /faq.html         → FAQ
 - /contact.html     → Contact form, phone, email, address, hours
