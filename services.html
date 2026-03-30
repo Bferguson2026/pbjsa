@@ -437,24 +437,14 @@
 
     var SVCS = [
       {
-        title: 'Bookkeeping',
-        desc: 'Accurate, tax-ready bookkeeping that keeps your finances organized and stress-free. We handle reconciliations, reporting, and day-to-day details so you can focus on running your business.',
-        img: 'assets/img/orbit-5.png'
-      },
-      {
-        title: 'Fractional CFO Services',
-        desc: 'Give you high-level financial expertise without the full-time cost. From cash flow and budgeting to growth planning, we provide the insights you need to make confident business decisions.',
-        img: 'assets/img/orbit-3.png'
-      },
-      {
         title: 'QuickBooks Clean-Up',
         desc: 'Messy books? We specialize in bookkeeping clean-up, organizing past records, fixing errors, and getting your finances back on track so you can move forward with clarity and confidence.',
         img: 'assets/img/orbit-4.png'
       },
       {
-        title: 'Cash Flow Management',
-        desc: 'We help you understand, track, and improve your cash flow so your business has the liquidity it needs to cover expenses, plan ahead, and grow with confidence.',
-        img: 'assets/img/orbit-9.png'
+        title: 'Bookkeeping',
+        desc: 'Accurate, tax-ready bookkeeping that keeps your finances organized and stress-free. We handle reconciliations, reporting, and day-to-day details so you can focus on running your business.',
+        img: 'assets/img/orbit-5.png'
       },
       {
         title: 'Budgeting & Forecasting',
@@ -462,21 +452,36 @@
         img: 'assets/img/orbit-6.png'
       },
       {
+        title: 'Financial Planning',
+        desc: 'We provide tailored financial planning to help you manage cash flow, reduce risk, and align your money with your long-term business goals.',
+        img: 'assets/img/orbit-7.png'
+      },
+      {
         title: 'Financial Reporting',
         desc: 'Accurate, easy-to-understand financial reports that give you a clear picture of your business performance and help you make informed decisions with confidence.',
         img: 'assets/img/orbit-8.png'
       },
       {
-        title: 'Financial Planning',
-        desc: 'We provide tailored financial planning to help you manage cash flow, reduce risk, and align your money with your long-term business goals.',
-        img: 'assets/img/orbit-7.png'
+        title: 'Cash Flow Management',
+        desc: 'We help you understand, track, and improve your cash flow so your business has the liquidity it needs to cover expenses, plan ahead, and grow with confidence.',
+        img: 'assets/img/orbit-9.png'
+      },
+      {
+        title: 'Fractional CFO Services',
+        desc: 'Give you high-level financial expertise without the full-time cost. From cash flow and budgeting to growth planning, we provide the insights you need to make confident business decisions.',
+        img: 'assets/img/orbit-3.png'
       }
     ];
 
     /* Build cards once */
     SVCS.forEach(function (s) {
-      var card = document.createElement('div');
+      var card = document.createElement('a');
       card.className = 'svc-modal-card';
+      card.href = 'contact.html';
+      card.setAttribute('data-open-modal', '');
+      card.style.textDecoration = 'none';
+      card.style.color = 'inherit';
+      card.style.cursor = 'pointer';
       card.innerHTML =
         '<div class="svc-modal-card-icon">' +
           '<img src="' + s.img + '" alt="' + s.title + '" style="width:100%;height:100%;object-fit:contain;">' +

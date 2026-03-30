@@ -2837,15 +2837,20 @@ body.splash-active { overflow: hidden; }
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
   padding: 1.4rem 1.25rem 1.25rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.svc-modal-card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(216,108,151,.12);
 }
 .svc-modal-card-icon {
-  width: 40px; height: 40px;
+  width: 48px; height: 48px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #48C2E0 0%, #2EA3C5 55%, #0D2B35 100%);
+  background: linear-gradient(135deg, #FDF2F5 0%, #F8DDE5 100%);
   display: grid;
   place-items: center;
   margin-bottom: .85rem;
-  color: #fff;
+  overflow: hidden;
 }
 .svc-modal-card-icon svg { width: 20px; height: 20px; }
 .svc-modal-card h3 {
