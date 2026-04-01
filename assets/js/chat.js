@@ -27,7 +27,7 @@
             '<img id="chatAvatar" src="" alt="" class="chat-avatar-img">',
           '</div>',
           '<div class="chat-header-info">',
-            '<p class="chat-name">PBJ Assistant</p>',
+            '<p class="chat-name">PB&amp;J Assistant</p>',
             '<p class="chat-status">\uD83E\uDD16 Ask Robo-Brittany anything!</p>',
           '</div>',
           '<button class="chat-close" id="chatClose" aria-label="Close chat">',
@@ -37,7 +37,7 @@
 
         '<div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversation">',
           '<div class="chat-msg chat-msg--bot">',
-            '<p>Hi! I\'m the PBJ Assistant. I can help you find the right page or answer a quick question. What brings you here today?</p>',
+            '<p>Hi! I\'m the PB&amp;J Assistant. I can help you find the right page or answer a quick question. What brings you here today?</p>',
           '</div>',
           '<div class="chat-chips" id="chatChips">',
             '<button class="chat-chip">What services do you offer?</button>',

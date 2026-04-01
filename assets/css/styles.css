@@ -501,7 +501,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .page-hero .eyebrow,
 .page-hero .kicker {
-  color: var(--gold-bg);
+  color: #1C1917;
 }
 
 .page-hero a {
@@ -2238,7 +2238,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* ── Text on dark backgrounds ────────────────────────────── */
 .on-dark           { color: #fff; }
-.eyebrow--light    { color: var(--gold-bg); }
+.eyebrow--light    { color: #1C1917; }
 .lead--light       { color: rgba(255,255,255,.75); }
 
 /* Eyebrow with inline leading rule */
@@ -2258,14 +2258,14 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* ── Buttons for teal backgrounds ────────────────────────── */
 .btn--inverse {
-  background: #fff;
-  color: var(--accent-dark);
-  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  background: var(--pink);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(216,108,151,.35);
 }
 .btn--inverse:hover {
-  background: var(--gold-bg);
-  color: var(--text);
-  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  background: var(--pink-dark);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(216,108,151,.5);
 }
 
 .btn-ghost {
@@ -2274,9 +2274,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border: 2px solid rgba(255,255,255,.35);
 }
 .btn-ghost:hover {
-  background: #fff;
-  color: var(--accent-dark);
-  border-color: #fff;
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
 }
 
 /* ── Hero inline stats ───────────────────────────────────── */
@@ -2318,13 +2318,13 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .section--dark .lead    { color: rgba(255,255,255,.72); }
 
 .section--dark .quote-card {
-  background: rgba(255,255,255,.15);
-  border-color: rgba(255,255,255,.15);
+  background: var(--pink-light);
+  border-color: rgba(216,108,151,.15);
 }
-.section--dark .quote-card blockquote { color: #fff; }
-.section--dark .quote-card::before    { color: var(--gold-bg); opacity: .4; }
-.section--dark .quote-author-name     { color: #fff; }
-.section--dark .quote-author-loc      { color: rgba(255,255,255,.6); }
+.section--dark .quote-card blockquote { color: var(--text); }
+.section--dark .quote-card::before    { color: var(--pink); opacity: .3; }
+.section--dark .quote-author-name     { color: var(--text); }
+.section--dark .quote-author-loc      { color: var(--text-muted); }
 
 /* ── Service card hover accent ───────────────────────────── */
 .service-card {
@@ -2534,7 +2534,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .eyebrow { color: var(--pink); }
 
 /* Eyebrow on tinted backgrounds */
-.section--dark .eyebrow { color: var(--gold-bg); }
+.section--dark .eyebrow { color: #1C1917; }
 
 /* Default section decorative rule — pink */
 .section-rule { background: var(--pink); }
