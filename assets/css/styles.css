@@ -175,12 +175,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 16px rgba(216, 108, 151, .28);
 }
 .btn:hover {
   background: var(--pink-dark);
-  color: #1C1917;
+  color: #fff;
   box-shadow: 0 6px 20px rgba(216, 108, 151, .45);
   transform: translateY(-1px);
 }
@@ -206,7 +206,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn-gold:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 6px 20px rgba(216, 108, 151, .38);
   transform: translateY(-1px);
 }
@@ -874,7 +874,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .price-amount {
   font-size: 1.65rem;
   font-weight: 800;
-  color: #1A7E9C;
+  color: #146A82;
   margin: .75rem 0 1rem;
   line-height: 1;
 }
@@ -1167,7 +1167,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border-radius: var(--radius-pill);
   border: none;
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   font-size: .82rem;
   font-weight: 700;
   font-family: inherit;
@@ -1422,7 +1422,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .btn-listen:hover,
 .btn-listen[aria-expanded="true"] {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
 }
 .btn-listen svg { flex-shrink: 0; }
 
@@ -1701,7 +1701,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .form-field textarea {
   width: 100%;
   padding: .75rem 1rem;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid #998F85;
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--text);
@@ -1889,12 +1889,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .cta-strip .btn {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 16px rgba(216,108,151,.3);
 }
 .cta-strip .btn:hover {
   background: var(--pink-dark);
-  color: #1C1917;
+  color: #fff;
   box-shadow: 0 6px 20px rgba(216,108,151,.45);
 }
 .cta-strip .btn-secondary {
@@ -1904,7 +1904,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .cta-strip .btn-secondary:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   border-color: var(--pink);
 }
 
@@ -1960,7 +1960,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .social-link:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
 }
 .social-link svg { width: 16px; height: 16px; }
 
@@ -2270,7 +2270,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* ── Buttons for teal backgrounds ────────────────────────── */
 .btn--inverse {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 20px rgba(216,108,151,.35);
 }
 .btn--inverse:hover {
@@ -2286,7 +2286,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn-ghost:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   border-color: var(--pink);
 }
 
@@ -2397,7 +2397,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* Pink-tinted section background */
 .section--pink-tint { background: var(--pink-light); }
-.section--pink-tint .eyebrow { color: var(--pink); }
+.section--pink-tint .eyebrow { color: #0E7490; }
 
 /* Eyebrow pink variant */
 .eyebrow--pink { color: var(--pink); }
@@ -2412,7 +2412,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .price-card--featured ul li::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23C4758C'%3E%3Cpath d='M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z'/%3E%3C/svg%3E");
 }
-.price-card--featured .price-amount { color: var(--pink); }
+.price-card--featured .price-amount { color: var(--pink-dark); }
 
 /* ── Video Section ───────────────────────────────────────── */
 .video-section {
@@ -2542,7 +2542,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
    ============================================================ */
 
 /* All eyebrow labels go pink */
-.eyebrow { color: var(--pink); }
+.eyebrow { color: #0E7490; }
 
 /* Eyebrow on tinted backgrounds */
 .section--dark .eyebrow { color: #1C1917; }
