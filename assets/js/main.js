@@ -337,25 +337,49 @@
     });
   }
 
-  /* Handle form submit (placeholder — swap for real backend) */
+  /* Handle form submit via Web3Forms */
   document.getElementById('cmodalForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    var form = e.target;
     var panel = modal.querySelector('.cmodal-panel');
-    panel.innerHTML = [
-      '<div style="text-align:center;padding:2rem 1rem;">',
-      '  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)"',
-      '       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem">',
-      '    <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>',
-      '  </svg>',
-      '  <h2 style="margin:0 0 .5rem;">Message Sent!</h2>',
-      '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">',
-      "    We'll be in touch within one business day.",
-      '  </p>',
-      '  <button class="btn" id="cmodalDone">Close</button>',
-      '</div>',
-    ].join('');
-    document.getElementById('cmodalDone').addEventListener('click', closeModal);
-    document.getElementById('cmodalDone').focus();
+    var formData = new FormData(form);
+    formData.append('access_key', '7ce672d3-a275-4ef5-868b-27bd20f93537');
+    formData.append('subject', 'New Contact Modal Submission - PBJ Strategic Accounting');
+    formData.append('from_name', 'PBJ Website Contact Modal');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      panel.innerHTML = [
+        '<div style="text-align:center;padding:2rem 1rem;">',
+        '  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)"',
+        '       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem">',
+        '    <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>',
+        '  </svg>',
+        '  <h2 style="margin:0 0 .5rem;">Message Sent!</h2>',
+        '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">',
+        "    We'll be in touch within one business day.",
+        '  </p>',
+        '  <button class="btn" id="cmodalDone">Close</button>',
+        '</div>',
+      ].join('');
+      document.getElementById('cmodalDone').addEventListener('click', closeModal);
+      document.getElementById('cmodalDone').focus();
+    })
+    .catch(function () {
+      panel.innerHTML = [
+        '<div style="text-align:center;padding:2rem 1rem;">',
+        '  <h2 style="margin:0 0 .5rem;color:var(--pink);">Something went wrong</h2>',
+        '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">Please try again or email us at info@pbjsa.com.</p>',
+        '  <button class="btn" id="cmodalDone">Close</button>',
+        '</div>',
+      ].join('');
+      document.getElementById('cmodalDone').addEventListener('click', closeModal);
+      document.getElementById('cmodalDone').focus();
+    });
   });
 })();
 
@@ -471,25 +495,49 @@
     openCbModal(link);
   });
 
-  /* Handle form submit */
+  /* Handle form submit via Web3Forms */
   document.getElementById('cbmodalForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    var form = e.target;
     var panel = modal.querySelector('.cmodal-panel');
-    panel.innerHTML = [
-      '<div style="text-align:center;padding:2rem 1rem;">',
-      '  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)"',
-      '       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem">',
-      '    <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>',
-      '  </svg>',
-      '  <h2 style="margin:0 0 .5rem;">Call Back Requested!</h2>',
-      '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">',
-      "    We'll reach out during your preferred time.",
-      '  </p>',
-      '  <button class="btn" id="cbmodalDone">Close</button>',
-      '</div>',
-    ].join('');
-    document.getElementById('cbmodalDone').addEventListener('click', closeCbModal);
-    document.getElementById('cbmodalDone').focus();
+    var formData = new FormData(form);
+    formData.append('access_key', '7ce672d3-a275-4ef5-868b-27bd20f93537');
+    formData.append('subject', 'New Call Back Request - PBJ Strategic Accounting');
+    formData.append('from_name', 'PBJ Website Call Back Form');
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      panel.innerHTML = [
+        '<div style="text-align:center;padding:2rem 1rem;">',
+        '  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)"',
+        '       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem">',
+        '    <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>',
+        '  </svg>',
+        '  <h2 style="margin:0 0 .5rem;">Call Back Requested!</h2>',
+        '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">',
+        "    We'll reach out during your preferred time.",
+        '  </p>',
+        '  <button class="btn" id="cbmodalDone">Close</button>',
+        '</div>',
+      ].join('');
+      document.getElementById('cbmodalDone').addEventListener('click', closeCbModal);
+      document.getElementById('cbmodalDone').focus();
+    })
+    .catch(function () {
+      panel.innerHTML = [
+        '<div style="text-align:center;padding:2rem 1rem;">',
+        '  <h2 style="margin:0 0 .5rem;color:var(--pink);">Something went wrong</h2>',
+        '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">Please try again or email us at info@pbjsa.com.</p>',
+        '  <button class="btn" id="cbmodalDone">Close</button>',
+        '</div>',
+      ].join('');
+      document.getElementById('cbmodalDone').addEventListener('click', closeCbModal);
+      document.getElementById('cbmodalDone').focus();
+    });
   });
 })();
 
