@@ -482,7 +482,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* ── 11. Page Hero ────────────────────────────────────────── */
 .page-hero {
   padding: 3.5rem 0 2.5rem;
-  background: linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)), var(--dark-teal);
+  background: var(--dark-teal);
   border-bottom: none;
   text-align: center;
 }
@@ -490,13 +490,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .page-hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: .6rem;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0,0,0,.3);
+  color: var(--text);
 }
 
 .page-hero p {
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  color: var(--text-muted);
   font-size: 1.08rem;
   max-width: 60ch;
   margin: 0 auto;
@@ -504,12 +502,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .page-hero .eyebrow,
 .page-hero .kicker {
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+  color: var(--text);
 }
 
 .page-hero a {
-  color: #fff;
+  color: var(--text);
 }
 
 /* ── 12. Cards (shared) ───────────────────────────────────── */
@@ -645,15 +642,13 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: .75rem;
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: rgba(255,255,255,.95);
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  color: var(--text-muted);
 }
 .google-rating-summary .rating-score {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text);
   line-height: 1;
-  text-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
 .google-rating-summary .rating-stars svg {
   width: 18px;
@@ -729,7 +724,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .reviews-loading {
-  color: rgba(255,255,255,.82);
+  color: var(--text-muted);
   font-style: italic;
   padding: 2rem;
 }
@@ -739,11 +734,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .reviews-google-link a {
   font-size: .85rem;
-  color: rgba(255,255,255,.85);
+  color: var(--text-muted);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.reviews-google-link a:hover { color: #fff; }
+.reviews-google-link a:hover { color: var(--pink); }
 
 /* Review Modal */
 .review-modal-backdrop {
@@ -2120,7 +2115,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .hero-panel-dark {
-  background: linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)), var(--dark-teal);
+  background: var(--dark-teal);
   display: flex;
   align-items: center;
   padding: 5rem 4.5rem;
@@ -2253,9 +2248,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 /* ── Text on dark backgrounds ────────────────────────────── */
-.on-dark           { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.3); }
-.eyebrow.eyebrow--light { color: #fff !important; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
-.lead--light       { color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.on-dark           { color: var(--text); }
+.eyebrow.eyebrow--light { color: var(--text) !important; }
+.lead--light       { color: var(--text-muted); }
 
 /* Eyebrow with inline leading rule */
 .eyebrow--rule {
@@ -2285,10 +2280,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .btn-ghost {
-  background: rgba(255,255,255,.15);
-  color: #fff;
-  border: 2px solid rgba(255,255,255,.5);
-  text-shadow: 0 1px 2px rgba(0,0,0,.2);
+  background: #fff;
+  color: var(--text);
+  border: 2px solid var(--border);
 }
 .btn-ghost:hover {
   background: var(--pink);
@@ -2302,7 +2296,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: 2.25rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,.25);
+  border-top: 1px solid rgba(0,0,0,.1);
   flex-wrap: wrap;
 }
 
@@ -2319,22 +2313,20 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .hero-stat-lbl {
   font-size: .68rem;
   font-weight: 600;
-  color: rgba(255,255,255,.9);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: .1em;
-  text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 /* ── Dark section ────────────────────────────────────────── */
 .section--dark {
-  background: linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)), var(--dark-teal);
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  background: var(--dark-teal);
+  color: var(--text);
 }
 .section--dark h2,
-.section--dark h3 { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.3); }
-.section--dark .eyebrow { color: #fff; }
-.section--dark .lead    { color: rgba(255,255,255,.95); }
+.section--dark h3 { color: var(--text); }
+.section--dark .eyebrow { color: var(--text); }
+.section--dark .lead    { color: var(--text-muted); }
 
 .section--dark .quote-card {
   background: var(--pink-light);
@@ -2559,7 +2551,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .section-rule { background: var(--pink); }
 
 /* Hero inline stats */
-.hero-stat-val { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.hero-stat-val { color: var(--pink); }
 
 /* Service card hover — pink left accent bar */
 .service-card:hover { border-left-color: var(--pink); }
@@ -2653,7 +2645,7 @@ body.splash-active { overflow: hidden; }
   z-index: 1;
   height: 200px;
   width: auto;
-  filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(196,117,140,.32));
+  filter: drop-shadow(0 0 32px rgba(196,117,140,.32));
   animation: splash-grow 3.3s ease-in forwards;
   transform-origin: center center;
 }
