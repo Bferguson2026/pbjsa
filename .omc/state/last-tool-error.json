@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"D:/PBJ Accounting/Website/pbjsa-premium/functions\"}",
+  "error": "EISDIR: illegal operation on a directory, read 'D:\\PBJ Accounting\\Website\\pbjsa-premium\\functions'",
+  "timestamp": "2026-03-31T23:39:40.241Z",
+  "retry_count": 1
+}

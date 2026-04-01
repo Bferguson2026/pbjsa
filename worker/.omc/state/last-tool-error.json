@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"D:/PBJ Accounting/Website/pbjsa-premium/worker\\\" && npx wrangler deploy 2>&1\",\"timeout\":120000,\"description\":\"Deploy chat worker to Cloudflare\"}",
+  "error": "Exit code 1\n\n ⛅️ wrangler 4.79.0\n───────────────────\n\nCloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md\n\n\u001b[31mX \u001b[41;31m[\u001b[41;97mERROR\u001b[41;31m]\u001b[0m \u001b[1mIn a non-interactive environment, it's necessary to set a CLOUDFLARE_API_TOKEN environment variable for wrangler to work. Please go to https://developers.cloudflare.com/fundamentals/api/get-started/create-token/ for instructions on...",
+  "timestamp": "2026-04-01T01:27:35.755Z",
+  "retry_count": 1
+}

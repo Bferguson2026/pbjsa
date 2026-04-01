@@ -20,8 +20,8 @@
   --accent-light:  #9FE2F0;
   --gold:          #B8882A;
   --gold-bg:       #FDF6E3;
-  --dark-teal:     #D6EEF5;
-  --dark-teal-2:   #C4E4EF;
+  --dark-teal:     #48C2E0;
+  --dark-teal-2:   #3AB0CC;
   --pink:          #D86C97;
   --pink-dark:     #B54D7A;
   --pink-mid:      #E8A0BC;
@@ -489,11 +489,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .page-hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: .6rem;
-  color: var(--text);
+  color: #fff;
 }
 
 .page-hero p {
-  color: var(--text-muted);
+  color: rgba(255,255,255,.75);
   font-size: 1.08rem;
   max-width: 60ch;
   margin: 0;
@@ -501,11 +501,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .page-hero .eyebrow,
 .page-hero .kicker {
-  color: var(--pink);
+  color: var(--gold-bg);
 }
 
 .page-hero a {
-  color: var(--accent-dark);
+  color: #fff;
 }
 
 /* ── 12. Cards (shared) ───────────────────────────────────── */
@@ -641,12 +641,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: .75rem;
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,.75);
 }
 .google-rating-summary .rating-score {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--text);
+  color: #fff;
   line-height: 1;
 }
 .google-rating-summary .rating-stars svg {
@@ -723,7 +723,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .reviews-loading {
-  color: var(--text-muted);
+  color: rgba(255,255,255,.5);
   font-style: italic;
   padding: 2rem;
 }
@@ -733,11 +733,11 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .reviews-google-link a {
   font-size: .85rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,.6);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.reviews-google-link a:hover { color: var(--pink); }
+.reviews-google-link a:hover { color: #fff; }
 
 /* Review Modal */
 .review-modal-backdrop {
@@ -1869,7 +1869,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* ── 20. CTA Strip ────────────────────────────────────────── */
 .cta-strip {
-  background: linear-gradient(135deg, #C4E4EF 0%, #D6EEF5 55%, #E8F5FA 100%);
+  background: var(--gold-bg);
   color: var(--text);
   padding: 3.5rem 0;
   text-align: center;
@@ -1884,14 +1884,14 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   font-size: 1.05rem;
 }
 .cta-strip .btn {
-  background: var(--pink);
+  background: var(--accent);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(216,108,151,.3);
+  box-shadow: 0 4px 16px rgba(72,194,224,.3);
 }
 .cta-strip .btn:hover {
-  background: var(--pink-dark);
+  background: var(--accent-dark);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(216,108,151,.45);
+  box-shadow: 0 6px 20px rgba(72,194,224,.45);
 }
 .cta-strip .btn-secondary {
   background: transparent;
@@ -1899,9 +1899,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border-color: var(--text-muted);
 }
 .cta-strip .btn-secondary:hover {
-  background: var(--pink);
+  background: var(--accent);
   color: #fff;
-  border-color: var(--pink);
+  border-color: var(--accent);
 }
 
 /* ── 21. Footer ───────────────────────────────────────────── */
@@ -2237,9 +2237,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 /* ── Text on dark backgrounds ────────────────────────────── */
-.on-dark           { color: var(--text); }
-.eyebrow--light    { color: var(--pink); }
-.lead--light       { color: var(--text-muted); }
+.on-dark           { color: #fff; }
+.eyebrow--light    { color: var(--gold-bg); }
+.lead--light       { color: rgba(255,255,255,.75); }
 
 /* Eyebrow with inline leading rule */
 .eyebrow--rule {
@@ -2256,27 +2256,27 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   flex-shrink: 0;
 }
 
-/* ── Buttons for light-blue backgrounds ──────────────────── */
+/* ── Buttons for teal backgrounds ────────────────────────── */
 .btn--inverse {
-  background: var(--pink);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(216,108,151,.3);
+  background: #fff;
+  color: var(--accent-dark);
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
 }
 .btn--inverse:hover {
-  background: var(--pink-dark);
-  color: #fff;
-  box-shadow: 0 6px 20px rgba(216, 108, 151, .45);
+  background: var(--gold-bg);
+  color: var(--text);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
 .btn-ghost {
   background: transparent;
-  color: var(--text);
-  border: 2px solid var(--text-muted);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.35);
 }
 .btn-ghost:hover {
-  background: var(--pink);
-  color: #fff;
-  border-color: var(--pink);
+  background: #fff;
+  color: var(--accent-dark);
+  border-color: #fff;
 }
 
 /* ── Hero inline stats ───────────────────────────────────── */
@@ -2285,7 +2285,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: 2.25rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid rgba(255,255,255,.2);
   flex-wrap: wrap;
 }
 
@@ -2302,7 +2302,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .hero-stat-lbl {
   font-size: .68rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: rgba(255,255,255,.5);
   text-transform: uppercase;
   letter-spacing: .1em;
 }
@@ -2310,21 +2310,21 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* ── Dark section ────────────────────────────────────────── */
 .section--dark {
   background: var(--dark-teal);
-  color: var(--text);
+  color: #fff;
 }
 .section--dark h2,
-.section--dark h3 { color: var(--text); }
-.section--dark .eyebrow { color: var(--pink); }
-.section--dark .lead    { color: var(--text-muted); }
+.section--dark h3 { color: #fff; }
+.section--dark .eyebrow { color: var(--gold-bg); }
+.section--dark .lead    { color: rgba(255,255,255,.72); }
 
 .section--dark .quote-card {
-  background: rgba(255,255,255,.5);
-  border-color: rgba(0,0,0,.08);
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.15);
 }
-.section--dark .quote-card blockquote { color: var(--text); }
-.section--dark .quote-card::before    { color: var(--pink); opacity: .25; }
-.section--dark .quote-author-name     { color: var(--text); }
-.section--dark .quote-author-loc      { color: var(--text-muted); }
+.section--dark .quote-card blockquote { color: #fff; }
+.section--dark .quote-card::before    { color: var(--gold-bg); opacity: .4; }
+.section--dark .quote-author-name     { color: #fff; }
+.section--dark .quote-author-loc      { color: rgba(255,255,255,.6); }
 
 /* ── Service card hover accent ───────────────────────────── */
 .service-card {
@@ -2534,13 +2534,13 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .eyebrow { color: var(--pink); }
 
 /* Eyebrow on tinted backgrounds */
-.section--dark .eyebrow { color: var(--pink); }
+.section--dark .eyebrow { color: var(--gold-bg); }
 
 /* Default section decorative rule — pink */
 .section-rule { background: var(--pink); }
 
-/* Hero inline stats — pink numbers */
-.hero-stat-val { color: var(--pink); }
+/* Hero inline stats — gold numbers */
+.hero-stat-val { color: var(--gold-bg); }
 
 /* Service card hover — pink left accent bar */
 .service-card:hover { border-left-color: var(--pink); }
@@ -2563,8 +2563,8 @@ img.quote-avatar {
   background: #fff;
 }
 
-/* Quote marks on tinted section — pink */
-.section--dark .quote-card::before { color: var(--pink); opacity: .4; }
+/* Quote marks on tinted section */
+.section--dark .quote-card::before { color: var(--gold-bg); opacity: .4; }
 
 /* Credential dots — pink */
 .cred-dot { background: var(--pink); }
@@ -2634,7 +2634,7 @@ body.splash-active { overflow: hidden; }
   z-index: 1;
   height: 200px;
   width: auto;
-  filter: drop-shadow(0 0 32px rgba(196,117,140,.32));
+  filter: brightness(0) invert(1) drop-shadow(0 0 32px rgba(196,117,140,.32));
   animation: splash-grow 3.3s ease-in forwards;
   transform-origin: center center;
 }

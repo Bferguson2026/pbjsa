@@ -16,6 +16,7 @@ const ALLOWED_ORIGINS = [
   'https://pbjsa.com',
   'https://www.pbjsa.com',
   'https://pbja.pages.dev',
+  'https://pbjsa.pages.dev',
   'http://localhost:3200',
 ];
 
