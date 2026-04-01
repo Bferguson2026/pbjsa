@@ -18,11 +18,11 @@
   --accent:        #48C2E0;
   --accent-dark:   #2EA3C5;
   --accent-light:  #9FE2F0;
-  --gold:          #9A7223;
+  --gold:          #B8882A;
   --gold-bg:       #FDF6E3;
   --dark-teal:     #48C2E0;
   --dark-teal-2:   #3AB0CC;
-  --pink:          #B54D7A;
+  --pink:          #D86C97;
   --pink-dark:     #B54D7A;
   --pink-mid:      #E8A0BC;
   --pink-light:    #FCEEF5;
@@ -175,12 +175,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 16px rgba(216, 108, 151, .28);
 }
 .btn:hover {
   background: var(--pink-dark);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 6px 20px rgba(216, 108, 151, .45);
   transform: translateY(-1px);
 }
@@ -201,12 +201,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .btn-gold {
   background: var(--gold);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 16px rgba(184, 136, 42, .32);
 }
 .btn-gold:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 6px 20px rgba(216, 108, 151, .38);
   transform: translateY(-1px);
 }
@@ -1167,7 +1167,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border-radius: var(--radius-pill);
   border: none;
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   font-size: .82rem;
   font-weight: 700;
   font-family: inherit;
@@ -1422,7 +1422,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .btn-listen:hover,
 .btn-listen[aria-expanded="true"] {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
 }
 .btn-listen svg { flex-shrink: 0; }
 
@@ -1889,12 +1889,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .cta-strip .btn {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 16px rgba(216,108,151,.3);
 }
 .cta-strip .btn:hover {
   background: var(--pink-dark);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 6px 20px rgba(216,108,151,.45);
 }
 .cta-strip .btn-secondary {
@@ -1904,7 +1904,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .cta-strip .btn-secondary:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   border-color: var(--pink);
 }
 
@@ -1960,7 +1960,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .social-link:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
 }
 .social-link svg { width: 16px; height: 16px; }
 
@@ -2270,7 +2270,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* ── Buttons for teal backgrounds ────────────────────────── */
 .btn--inverse {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   box-shadow: 0 4px 20px rgba(216,108,151,.35);
 }
 .btn--inverse:hover {
@@ -2286,7 +2286,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .btn-ghost:hover {
   background: var(--pink);
-  color: #fff;
+  color: #1C1917;
   border-color: var(--pink);
 }
 
