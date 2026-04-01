@@ -493,7 +493,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .page-hero p {
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.92);
   font-size: 1.08rem;
   max-width: 60ch;
   margin: 0;
@@ -641,7 +641,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: .75rem;
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.92);
 }
 .google-rating-summary .rating-score {
   font-size: 1.75rem;
@@ -723,7 +723,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .reviews-loading {
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.82);
   font-style: italic;
   padding: 2rem;
 }
@@ -733,7 +733,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .reviews-google-link a {
   font-size: .85rem;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.85);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -2239,7 +2239,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* ── Text on dark backgrounds ────────────────────────────── */
 .on-dark           { color: #fff; }
 .eyebrow.eyebrow--light { color: #1C1917 !important; }
-.lead--light       { color: rgba(255,255,255,.75); }
+.lead--light       { color: rgba(255,255,255,.92); }
 
 /* Eyebrow with inline leading rule */
 .eyebrow--rule {
@@ -2302,7 +2302,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .hero-stat-lbl {
   font-size: .68rem;
   font-weight: 600;
-  color: rgba(255,255,255,.5);
+  color: rgba(255,255,255,.82);
   text-transform: uppercase;
   letter-spacing: .1em;
 }
@@ -2315,7 +2315,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .section--dark h2,
 .section--dark h3 { color: #fff; }
 .section--dark .eyebrow { color: #1C1917; }
-.section--dark .lead    { color: rgba(255,255,255,.72); }
+.section--dark .lead    { color: rgba(255,255,255,.92); }
 
 .section--dark .quote-card {
   background: var(--pink-light);
@@ -2324,7 +2324,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .section--dark .quote-card blockquote { color: var(--text); }
 .section--dark .quote-card::before    { color: var(--pink); opacity: .3; }
 .section--dark .quote-author-name     { color: var(--text); }
-.section--dark .quote-author-loc      { color: var(--text-muted); }
+.section--dark .quote-author-loc      { color: #5C5248; }
 
 /* ── Service card hover accent ───────────────────────────── */
 .service-card {
