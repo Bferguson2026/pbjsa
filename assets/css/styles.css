@@ -491,10 +491,12 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: .6rem;
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
 
 .page-hero p {
-  color: rgba(255,255,255,.92);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
   font-size: 1.08rem;
   max-width: 60ch;
   margin: 0 auto;
@@ -502,7 +504,8 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 .page-hero .eyebrow,
 .page-hero .kicker {
-  color: #1C1917;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
 
 .page-hero a {
@@ -642,13 +645,15 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: .75rem;
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: rgba(255,255,255,.92);
+  color: rgba(255,255,255,.95);
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 .google-rating-summary .rating-score {
   font-size: 1.75rem;
   font-weight: 700;
   color: #fff;
   line-height: 1;
+  text-shadow: 0 1px 3px rgba(0,0,0,.3);
 }
 .google-rating-summary .rating-stars svg {
   width: 18px;
@@ -1372,8 +1377,8 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 .chat-input:disabled { opacity: .6; }
 .chat-send {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background: var(--accent);
@@ -1711,9 +1716,10 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(139, 77, 47, .12);
-  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(216, 108, 151, .25);
+  outline: 2px solid var(--pink);
+  outline-offset: 1px;
 }
 .form-field input::placeholder,
 .form-field textarea::placeholder {
@@ -2247,9 +2253,9 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 /* ── Text on dark backgrounds ────────────────────────────── */
-.on-dark           { color: #fff; }
-.eyebrow.eyebrow--light { color: #1C1917 !important; }
-.lead--light       { color: rgba(255,255,255,.92); }
+.on-dark           { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.3); }
+.eyebrow.eyebrow--light { color: #fff !important; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.lead--light       { color: rgba(255,255,255,.95); text-shadow: 0 1px 2px rgba(0,0,0,.25); }
 
 /* Eyebrow with inline leading rule */
 .eyebrow--rule {
@@ -2279,9 +2285,10 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 }
 
 .btn-ghost {
-  background: #fff;
-  color: var(--text);
-  border: 2px solid #fff;
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.5);
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 .btn-ghost:hover {
   background: var(--pink);
@@ -2295,7 +2302,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   gap: 2.25rem;
   margin-top: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,.2);
+  border-top: 1px solid rgba(255,255,255,.25);
   flex-wrap: wrap;
 }
 
@@ -2312,29 +2319,31 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 .hero-stat-lbl {
   font-size: .68rem;
   font-weight: 600;
-  color: rgba(255,255,255,.82);
+  color: rgba(255,255,255,.9);
   text-transform: uppercase;
   letter-spacing: .1em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 /* ── Dark section ────────────────────────────────────────── */
 .section--dark {
   background: var(--dark-teal);
   color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 .section--dark h2,
-.section--dark h3 { color: #fff; }
-.section--dark .eyebrow { color: #1C1917; }
-.section--dark .lead    { color: rgba(255,255,255,.92); }
+.section--dark h3 { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.3); }
+.section--dark .eyebrow { color: #fff; }
+.section--dark .lead    { color: rgba(255,255,255,.95); }
 
 .section--dark .quote-card {
   background: var(--pink-light);
   border-color: rgba(216,108,151,.15);
 }
-.section--dark .quote-card blockquote { color: var(--text); }
-.section--dark .quote-card::before    { color: var(--pink); opacity: .3; }
-.section--dark .quote-author-name     { color: var(--text); }
-.section--dark .quote-author-loc      { color: #5C5248; }
+.section--dark .quote-card blockquote { color: var(--text); text-shadow: none; }
+.section--dark .quote-card::before    { color: var(--pink); opacity: .3; text-shadow: none; }
+.section--dark .quote-author-name     { color: var(--text); text-shadow: none; }
+.section--dark .quote-author-loc      { color: #5C5248; text-shadow: none; }
 
 /* ── Service card hover accent ───────────────────────────── */
 .service-card {
@@ -2549,8 +2558,8 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 /* Default section decorative rule — pink */
 .section-rule { background: var(--pink); }
 
-/* Hero inline stats — gold numbers */
-.hero-stat-val { color: var(--gold-bg); }
+/* Hero inline stats */
+.hero-stat-val { color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
 
 /* Service card hover — pink left accent bar */
 .service-card:hover { border-left-color: var(--pink); }
@@ -2591,7 +2600,7 @@ img.quote-avatar {
 .form-field select:focus,
 .form-field textarea:focus {
   border-color: var(--pink);
-  box-shadow: 0 0 0 3px rgba(196, 117, 140, .14);
+  box-shadow: 0 0 0 3px rgba(216, 108, 151, .25);
 }
 
 /* Form required asterisk — pink */
