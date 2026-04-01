@@ -321,6 +321,13 @@
     </div>
   </footer>
 
+  <script>
+  /* Pause hero video for reduced-motion preference */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var v = document.querySelector('.hero-panel-photo');
+    if (v) { v.pause(); v.removeAttribute('autoplay'); }
+  }
+  </script>
   <script src="assets/js/main.js" defer></script>
   <script>
     (function () {
