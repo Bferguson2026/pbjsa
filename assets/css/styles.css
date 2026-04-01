@@ -18,11 +18,11 @@
   --accent:        #48C2E0;
   --accent-dark:   #2EA3C5;
   --accent-light:  #9FE2F0;
-  --gold:          #B8882A;
+  --gold:          #9A7223;
   --gold-bg:       #FDF6E3;
   --dark-teal:     #48C2E0;
   --dark-teal-2:   #3AB0CC;
-  --pink:          #D86C97;
+  --pink:          #B54D7A;
   --pink-dark:     #B54D7A;
   --pink-mid:      #E8A0BC;
   --pink-light:    #FCEEF5;
@@ -71,7 +71,7 @@ input, button, textarea, select { font: inherit; }
 p, h1, h2, h3, h4 { overflow-wrap: break-word; }
 
 a {
-  color: #1A7E9C;
+  color: #17708B;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -1289,7 +1289,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   border-bottom-left-radius: 4px;
 }
 .chat-msg--bot p a {
-  color: var(--accent);
+  color: #17708B;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -1376,7 +1376,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   height: 44px;
   border-radius: 50%;
   border: none;
-  background: var(--accent);
+  background: #1B7A96;
   color: #fff;
   display: flex;
   align-items: center;
@@ -1454,7 +1454,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: var(--accent);
+  background: #1B7A96;
   color: #fff;
   display: flex;
   align-items: center;
