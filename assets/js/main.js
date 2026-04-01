@@ -259,7 +259,7 @@
     '        </div>',
     '        <button class="btn" type="submit" style="justify-content:center;">Send Message</button>',
     '        <p style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem;">',
-    '          Fields marked with * are required. Or call us at <a href="tel:9047082411">904-708-2411</a>.',
+    '          Fields marked with * are required. Or <a href="#" data-open-callback>schedule a call back</a>.',
     '        </p>',
     '      </div>',
     '    </form>',
@@ -356,6 +356,140 @@
     ].join('');
     document.getElementById('cmodalDone').addEventListener('click', closeModal);
     document.getElementById('cmodalDone').focus();
+  });
+})();
+
+
+/* ── Callback Modal ──────────────────────────────────────── */
+(function () {
+  var CB_HTML = [
+    '<div id="cbmodal" class="cmodal" role="dialog" aria-modal="true"',
+    '     aria-labelledby="cbmodal-title" aria-hidden="true">',
+    '  <div class="cmodal-backdrop" id="cbmodalBackdrop"></div>',
+    '  <div class="cmodal-panel">',
+    '    <button class="cmodal-close" id="cbmodalClose" aria-label="Close form">',
+    '      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"',
+    '           stroke-width="2.5" stroke-linecap="round" aria-hidden="true">',
+    '        <path d="M18 6 6 18M6 6l12 12"/>',
+    '      </svg>',
+    '    </button>',
+    '    <span class="eyebrow">We\'ll Call You</span>',
+    '    <h2 id="cbmodal-title" style="font-size:1.5rem;margin:.5rem 0 .4rem;">Schedule a Call Back</h2>',
+    '    <p style="color:var(--text-muted);font-size:.92rem;margin:0 0 1.5rem;">Fill out the form below and we\'ll reach out during your preferred time.</p>',
+    '    <form id="cbmodalForm" action="#" method="post" novalidate>',
+    '      <div class="form-grid">',
+    '        <div class="form-field">',
+    '          <label for="cb-name">Full Name <abbr title="required" aria-label="required">*</abbr></label>',
+    '          <input id="cb-name" name="name" type="text" autocomplete="name" required aria-required="true" placeholder="Jane Smith">',
+    '        </div>',
+    '        <div class="form-field">',
+    '          <label for="cb-phone">Phone Number <abbr title="required" aria-label="required">*</abbr></label>',
+    '          <input id="cb-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" placeholder="(904) 555-0100">',
+    '        </div>',
+    '        <div class="form-field">',
+    '          <label for="cb-day">Preferred Day</label>',
+    '          <select id="cb-day" name="preferred_day">',
+    '            <option value="any">Any Weekday</option>',
+    '            <option value="monday">Monday</option>',
+    '            <option value="tuesday">Tuesday</option>',
+    '            <option value="wednesday">Wednesday</option>',
+    '            <option value="thursday">Thursday</option>',
+    '            <option value="friday">Friday</option>',
+    '          </select>',
+    '        </div>',
+    '        <div class="form-field">',
+    '          <label for="cb-time">Preferred Time</label>',
+    '          <select id="cb-time" name="preferred_time">',
+    '            <option value="morning">Morning (8\u201311 am)</option>',
+    '            <option value="midday">Midday (11 am\u20132 pm)</option>',
+    '            <option value="afternoon">Afternoon (2\u20135 pm)</option>',
+    '            <option value="any">Any Time</option>',
+    '          </select>',
+    '        </div>',
+    '        <button class="btn" type="submit" style="justify-content:center;">Request a Call Back</button>',
+    '        <p style="font-size:.8rem;color:var(--text-muted);margin-top:.25rem;">',
+    '          We\'ll call you back within one business day during your preferred time.',
+    '        </p>',
+    '      </div>',
+    '    </form>',
+    '  </div>',
+    '</div>',
+  ].join('\n');
+
+  var wrap = document.createElement('div');
+  wrap.innerHTML = CB_HTML;
+  document.body.appendChild(wrap.firstChild);
+
+  var modal    = document.getElementById('cbmodal');
+  var closeBtn = document.getElementById('cbmodalClose');
+  var openerEl = null;
+
+  function openCbModal(triggerEl) {
+    openerEl = triggerEl || document.activeElement;
+    modal.removeAttribute('aria-hidden');
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    var first = modal.querySelector('input, select, textarea, button');
+    if (first) first.focus();
+  }
+
+  function closeCbModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (openerEl) openerEl.focus();
+  }
+
+  closeBtn.addEventListener('click', closeCbModal);
+  modal.addEventListener('click', function (e) {
+    if (!e.target.closest('.cmodal-panel')) closeCbModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeCbModal();
+  });
+
+  /* Focus trap */
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || !modal.classList.contains('is-open')) return;
+    var focusable = modal.querySelectorAll(
+      'button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'
+    );
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* Intercept [data-open-callback] links */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-open-callback]');
+    if (!link) return;
+    e.preventDefault();
+    openCbModal(link);
+  });
+
+  /* Handle form submit */
+  document.getElementById('cbmodalForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var panel = modal.querySelector('.cmodal-panel');
+    panel.innerHTML = [
+      '<div style="text-align:center;padding:2rem 1rem;">',
+      '  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)"',
+      '       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1rem">',
+      '    <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>',
+      '  </svg>',
+      '  <h2 style="margin:0 0 .5rem;">Call Back Requested!</h2>',
+      '  <p style="color:var(--text-muted);margin:0 0 1.5rem;">',
+      "    We'll reach out during your preferred time.",
+      '  </p>',
+      '  <button class="btn" id="cbmodalDone">Close</button>',
+      '</div>',
+    ].join('');
+    document.getElementById('cbmodalDone').addEventListener('click', closeCbModal);
+    document.getElementById('cbmodalDone').focus();
   });
 })();
 

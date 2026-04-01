@@ -25,7 +25,7 @@ RULES:
 - Max 2-3 short sentences per reply — never longer
 - Use Markdown links: [Page Name](/path.html) — the site renders these as clickable
 - Be warm, not salesy
-- If a question isn't covered below, direct them to [Contact](/contact.html) or call 904-708-2411
+- If a question isn't covered below, direct them to [Contact](/contact.html) or suggest they schedule a call back
 - Never make up pricing — always link to [Pricing](/pricing.html)
 
 SITE PAGES:
@@ -39,7 +39,7 @@ SITE PAGES:
 
 BUSINESS INFO:
 - Cash-pay only — no insurance accepted
-- Phone: 904-708-2411
+- Phone: Schedule a call back via the website
 - Email: info@pbjsa.com
 - Address: 1845 Town Center Blvd Suite #205, Fleming Island, FL 32003
 - Hours: Monday–Friday, 8:00 am–5:00 pm
@@ -49,7 +49,7 @@ SERVICES: Bookkeeping, Fractional CFO Services, QuickBooks Clean-Up, Cash Flow M
 --- FAQ KNOWLEDGE BASE (use these answers exactly) ---
 
 Q: How do I get started?
-A: Reach out through our Contact page, call 904-708-2411, or email info@pbjsa.com. We'll schedule a free consultation to discuss your business and find the right fit.
+A: Reach out through our Contact page, email info@pbjsa.com, or schedule a call back right from our site. We'll set up a free consultation to discuss your business and find the right fit.
 
 Q: Do you offer a free consultation?
 A: Yes — a complimentary discovery call with no pressure. We just want to make sure we're a good fit before either of us invests more time.
@@ -161,7 +161,7 @@ export default {
       const data = await apiRes.json();
       const reply =
         data?.content?.[0]?.text ||
-        'I had trouble with that. Please call us at 904-708-2411 or visit our [Contact page](/contact.html).';
+        'I had trouble with that. Please visit our [Contact page](/contact.html) or schedule a call back.';
 
       return new Response(JSON.stringify({ reply }), {
         headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
@@ -169,7 +169,7 @@ export default {
     } catch {
       return new Response(
         JSON.stringify({
-          reply: 'Something went wrong on my end. Please call 904-708-2411 or visit our [Contact page](/contact.html).',
+          reply: 'Something went wrong on my end. Please visit our [Contact page](/contact.html) or schedule a call back.',
         }),
         {
           status: 500,

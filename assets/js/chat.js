@@ -140,7 +140,7 @@
     /* ── Fallback knowledge base (no API needed) ─────────── */
     var FALLBACK_QA = [
       { keys: ['get started', 'how do i', 'begin', 'sign up', 'start'],
-        a: 'Reach out through our [Contact page](/contact.html), call 904-708-2411, or email info@pbjsa.com. We\'ll schedule a free consultation to find the right fit!' },
+        a: 'Reach out through our [Contact page](/contact.html) or email info@pbjsa.com. You can also schedule a call back right from our site. We\'ll get you set up with a free consultation!' },
       { keys: ['free consultation', 'discovery call', 'free call'],
         a: 'Yes! We offer a complimentary discovery call with no pressure. We just want to make sure we\'re a good fit. [Book a call](/contact.html)' },
       { keys: ['first meeting', 'bring', 'prepare'],
@@ -178,16 +178,16 @@
       { keys: ['outside clay', 'other areas', 'out of state', 'nationwide', 'remote client'],
         a: 'Yes! While our roots are in Clay County, we work with businesses throughout Northeast Florida and remotely across the country. Location is rarely a barrier.' },
       { keys: ['phone', 'call', 'number'],
-        a: 'Give us a call at 904-708-2411 or reach out through our [Contact page](/contact.html). We\'d love to hear from you!' },
+        a: 'You can schedule a call back or reach out through our [Contact page](/contact.html). We\'d love to hear from you!' },
       { keys: ['email', 'contact'],
         a: 'You can email us at info@pbjsa.com or reach out through our [Contact page](/contact.html). We typically respond within one business day.' },
       { keys: ['hello', 'hi', 'hey', 'good morning', 'good afternoon'],
         a: 'Hi there! Welcome to PBJ Strategic Accounting. How can I help you today? Feel free to ask about our services, pricing, or anything else!' },
       { keys: ['thank', 'thanks', 'appreciate'],
-        a: 'You\'re welcome! If you need anything else, don\'t hesitate to ask. You can also reach us at 904-708-2411 or [Contact us](/contact.html) anytime.' },
+        a: 'You\'re welcome! If you need anything else, don\'t hesitate to ask. You can also [Contact us](/contact.html) or schedule a call back anytime.' },
     ];
 
-    var FALLBACK_DEFAULT = 'I\'m not sure about that one, but I\'d love to help! Give us a call at 904-708-2411 or visit our [Contact page](/contact.html) and we\'ll get you sorted out.';
+    var FALLBACK_DEFAULT = 'I\'m not sure about that one, but I\'d love to help! Visit our [Contact page](/contact.html) or schedule a call back and we\'ll get you sorted out.';
 
     function fallbackReply(text) {
       var lower = text.toLowerCase();
