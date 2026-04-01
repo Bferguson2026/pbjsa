@@ -2238,7 +2238,7 @@ h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: 
 
 /* ── Text on dark backgrounds ────────────────────────────── */
 .on-dark           { color: #fff; }
-.eyebrow--light    { color: #1C1917; }
+.eyebrow.eyebrow--light { color: #1C1917 !important; }
 .lead--light       { color: rgba(255,255,255,.75); }
 
 /* Eyebrow with inline leading rule */
