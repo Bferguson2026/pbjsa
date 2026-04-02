@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"D:/PBJ Accounting/Website/pbjsa-premium\\\" && echo \\\"=== CONTRAST CHECKS ===\\\" &&\\necho \\\"1. Eyebrow on white:\\\" && grep -o '\\\\.eyebrow{[^}]*color:[^;]*' assets/css/styles.css | head -...",
+  "error": "Exit code 1\n=== CONTRAST CHECKS ===\n1. Eyebrow on white:\n.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0E7490\n2. Blog tag:\nblog-card-tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a14068\n3. Price badge:\nprice-badge{display:inline-block;background:var(--gold);color:#1c1917\n=== TOUCH TARGETS ===\n4. Hamburger:\nhamburger{display:none;flex-direction:column;justify-cont...",
+  "timestamp": "2026-04-02T02:36:47.904Z",
+  "retry_count": 1
+}
