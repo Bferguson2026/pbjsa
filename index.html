@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="preload" href="assets/img/pbj-logo-full.webp" as="image" type="image/webp">
   <link rel="canonical" href="https://pbjsa.com/">
@@ -23,44 +24,18 @@
   <meta name="twitter:title" content="Clay County Bookkeeping & Accounting Services | PB&J Strategic Accounting">
   <meta name="twitter:description" content="PB&J Strategic Accounting specializes in bookkeeping and accounting for Clay County & surrounding area small businesses - helping you simplify finances and grow with confidence.">
   <meta name="twitter:image" content="https://pbjsa.com/assets/img/og-image.jpg">
+  <meta property="og:locale" content="en_US">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AccountingService",
+    "@type": ["AccountingService", "LocalBusiness"],
     "name": "PB&J Strategic Accounting",
-    "description": "Expert bookkeeping and accounting services for Clay County and surrounding area small businesses.",
-    "url": "https://pbjsa.com",
-    "telephone": "+19047082411",
-    "email": "info@pbjsa.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "1845 Town Center Blvd. Suite #205",
-      "addressLocality": "Fleming Island",
-      "addressRegion": "FL",
-      "postalCode": "32003",
-      "addressCountry": "US"
-    },
-    "openingHours": "Mo-Fr 08:00-17:00",
-    "priceRange": "$400-$2000",
-    "image": "https://pbjsa.com/assets/img/pbj-logo-full.webp",
-    "founder": { "@type": "Person", "name": "Brittany Ferguson" },
-    "areaServed": [
-      { "@type": "City", "name": "Fleming Island" },
-      { "@type": "AdministrativeArea", "name": "Clay County, FL" },
-      { "@type": "City", "name": "Jacksonville" }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "PB&J Strategic Accounting",
-    "description": "Expert bookkeeping and accounting services for Clay County and surrounding area small businesses.",
+    "description": "Expert bookkeeping and accounting services for Clay County and surrounding area small businesses. Services include bookkeeping, QuickBooks clean-up, fractional CFO, cash flow management, budgeting, financial planning, and financial reporting.",
     "url": "https://pbjsa.com",
     "telephone": "+19047082411",
     "email": "info@pbjsa.com",
     "image": "https://pbjsa.com/assets/img/pbj-logo-full.webp",
+    "logo": "https://pbjsa.com/assets/img/pbj-logo-full.webp",
     "priceRange": "$400-$2000",
     "address": {
       "@type": "PostalAddress",
@@ -83,14 +58,32 @@
         "closes": "17:00"
       }
     ],
+    "founder": {
+      "@type": "Person",
+      "name": "Brittany Ferguson",
+      "jobTitle": "Founder & Lead Accountant",
+      "url": "https://pbjsa.com/about.html"
+    },
     "areaServed": [
       { "@type": "City", "name": "Fleming Island" },
       { "@type": "AdministrativeArea", "name": "Clay County, FL" },
-      { "@type": "City", "name": "Jacksonville" }
+      { "@type": "City", "name": "Jacksonville" },
+      { "@type": "State", "name": "Florida" }
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "ratingCount": "20"
+    },
     "sameAs": [
       "https://www.google.com/maps?cid=16820855285451641250"
-    ]
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": "https://pbjsa.com/contact.html",
+      "name": "Book a Free Consultation"
+    }
   }
   </script>
 </head>
