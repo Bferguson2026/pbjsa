@@ -4,7 +4,12 @@
 .social-links a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:var(--text);background:transparent;border:1px solid var(--surface-3);transition:color .2s,background .2s,border-color .2s,transform .2s}
 .social-links a:hover{color:#fff;background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-1px)}
 .social-links .social-ico{display:block}
-.social-links--header{margin-right:.75rem}
+.social-links--header{margin-right:.75rem;gap:.65rem}
+.social-links--header a{width:auto;height:auto;border:0;background:transparent;border-radius:0;padding:.25rem}
+.social-links--header a:hover{background:transparent;border:0;transform:translateY(-1px);opacity:.85}
+.social-links--header .social-ico{width:22px;height:22px}
+.social-links--header li:nth-child(1) a{color:#0A66C2}
+.social-links--header li:nth-child(2) a{color:#1877F2}
 .social-links--footer{margin-top:1rem}
 .social-links--footer a{color:var(--text-muted);border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
 .site-footer .social-links--footer a:hover{color:#fff;background:var(--accent-dark);border-color:var(--accent-dark)}
