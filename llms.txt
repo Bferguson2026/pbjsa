@@ -37,14 +37,14 @@
 ## Key Pages
 
 - [Home](https://pbjsa.com/)
-- [About Brittany Ferguson](https://pbjsa.com/about.html)
-- [Services](https://pbjsa.com/services.html)
-- [Pricing](https://pbjsa.com/pricing.html)
-- [FAQ](https://pbjsa.com/faq.html)
-- [Contact](https://pbjsa.com/contact.html)
+- [About Brittany Ferguson](https://pbjsa.com/about)
+- [Services](https://pbjsa.com/services)
+- [Pricing](https://pbjsa.com/pricing)
+- [FAQ](https://pbjsa.com/faq)
+- [Contact](https://pbjsa.com/contact)
 - [Blog](https://pbjsa.com/blog/)
 
 ## Blog Articles
 
-- [Top 7 Mistakes Small Businesses Make in QuickBooks](https://pbjsa.com/blog/top-7-mistakes-small-businesses-make-in-quickbooks-and-how-to-fix-them.html)
-- [Why Businesses Need Clean Books from the Start](https://pbjsa.com/blog/why-businesses-need-clean-books-from-the-start.html)
+- [Top 7 Mistakes Small Businesses Make in QuickBooks](https://pbjsa.com/blog/top-7-mistakes-small-businesses-make-in-quickbooks-and-how-to-fix-them)
+- [Why Businesses Need Clean Books from the Start](https://pbjsa.com/blog/why-businesses-need-clean-books-from-the-start)
