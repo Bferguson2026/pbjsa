@@ -73,7 +73,8 @@ body.modal-open{overflow:hidden}
 /* === Transparent header over team-page hero === */
 body.has-hero-overlay .site-header{position:fixed;top:0;left:0;right:0;background:transparent;border-bottom:0;box-shadow:none;transition:background-color .3s ease,box-shadow .3s ease;z-index:100}
 body.has-hero-overlay .site-header.is-scrolled{background:var(--surface);box-shadow:0 2px 14px rgba(28,25,23,.08)}
-body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a{color:var(--pink);text-shadow:0 1px 10px rgba(0,0,0,.55)}
+body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a:hover{color:var(--pink-light);text-shadow:0 0 14px rgba(255,67,164,.6)}
 body.has-hero-overlay .site-header:not(.is-scrolled) .hamburger span{background-color:#fff}
 body.has-hero-overlay .site-header:not(.is-scrolled) .nav-cta{color:#fff;border-color:rgba(255,255,255,.75);background:transparent}
 body.has-hero-overlay .site-header:not(.is-scrolled) .nav-cta:hover{background:rgba(255,255,255,.15)}
