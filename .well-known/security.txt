@@ -1,0 +1,7 @@
+# PB&J Strategic Accounting — Security Contact
+# Per RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116)
+
+Contact: mailto:info@pbjsa.com
+Expires: 2027-06-09T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://pbjsa.com/.well-known/security.txt
