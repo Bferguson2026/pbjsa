@@ -105,3 +105,19 @@ body.has-hero-overlay .site-header:not(.is-scrolled) .site-logo{filter:brightnes
 /* === Hero depth === */
 .hero-full,.overlay-band{z-index:1;border-bottom:1px solid rgba(28,25,23,.22);box-shadow:0 22px 48px -24px rgba(28,25,23,.5)}
 .overlay-band{border-top:1px solid rgba(28,25,23,.22)}
+/* === Why PB&J typographic cards === */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.75rem;margin-top:2.5rem}
+.why-card{position:relative;background:var(--surface);border:1px solid var(--surface-3);border-radius:18px;padding:2.4rem 2rem 2.1rem;overflow:hidden;box-shadow:0 10px 30px -18px rgba(28,25,23,.18);transition:transform .25s ease,box-shadow .25s ease}
+.why-card:hover{transform:translateY(-5px);box-shadow:0 24px 48px -20px rgba(28,25,23,.3)}
+.why-letter{position:absolute;top:-2.1rem;right:.3rem;font-size:10rem;font-weight:700;line-height:1;letter-spacing:-.05em;pointer-events:none;user-select:none;opacity:.14;transition:opacity .25s ease,transform .25s ease}
+.why-card:hover .why-letter{opacity:.26;transform:translateY(4px)}
+.why-card--p .why-letter{color:var(--pink)}
+.why-card--b .why-letter{color:var(--gold)}
+.why-card--j .why-letter{color:#0E7490}
+.why-kicker{position:relative;display:block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.2rem}
+.why-card h3{position:relative;font-size:1.3rem;margin:0 0 .5rem}
+.why-rule{position:relative;width:36px;height:3px;border-radius:2px;margin:0 0 1rem}
+.why-card--p .why-rule{background:var(--pink)}
+.why-card--b .why-rule{background:var(--gold)}
+.why-card--j .why-rule{background:#0E7490}
+.why-card p{position:relative;margin:0;color:var(--text-muted);font-size:.96rem;line-height:1.62}
