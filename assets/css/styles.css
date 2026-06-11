@@ -129,3 +129,15 @@ body.has-hero-overlay .site-header:not(.is-scrolled) .site-logo{filter:brightnes
 .hero-full-overlay .hero-stat-val{color:#fff}
 .hero-full-overlay .hero-stat-lbl{color:rgba(255,255,255,.78)}
 @media (prefers-reduced-motion:reduce){.hero-full video{display:none}}
+/* === Awards & accolades === */
+.awards-section{padding:3.75rem 0 4rem}
+.awards-row{display:flex;justify-content:center;align-items:flex-start;gap:clamp(2rem,6vw,4.5rem);flex-wrap:wrap;margin-top:2.25rem}
+.award-badge{display:flex;flex-direction:column;align-items:center;gap:1.05rem;max-width:250px;text-align:center}
+.award-seal{width:152px;height:152px;border-radius:50%;border:2px solid var(--gold);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;background:var(--surface);box-shadow:0 12px 28px -16px rgba(184,136,42,.45);transition:transform .25s ease,box-shadow .25s ease}
+.award-badge:hover .award-seal{transform:translateY(-4px);box-shadow:0 18px 36px -16px rgba(184,136,42,.6)}
+.award-seal::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid var(--gold);opacity:.65}
+.award-seal-text{font-size:.64rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);line-height:1.6;padding:0 1rem}
+.award-seal-star{color:var(--gold);font-size:.7rem;line-height:1}
+.award-seal img{width:100%;height:100%;object-fit:contain;border-radius:50%;padding:10px}
+.award-name{font-weight:700;font-size:.98rem;color:var(--text);margin:0}
+.award-desc{font-size:.84rem;color:var(--text-muted);margin:0;line-height:1.55}
