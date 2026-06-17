@@ -122,9 +122,9 @@ body.has-hero-overlay .site-header:not(.is-scrolled) .site-logo{filter:brightnes
 .why-card--j .why-rule{background:#0E7490}
 .why-card p{position:relative;margin:0;color:var(--text-muted);font-size:.96rem;line-height:1.62}
 /* === Video hero === */
-.hero-full--video{aspect-ratio:1.85/1;max-height:90vh}
-.hero-full--video .hero-full-img{object-position:center 18%}
-@media (max-width:700px){.hero-full--video{aspect-ratio:4/5}.hero-full--video .hero-full-img{object-position:center 12%}}
+.hero-full--video{aspect-ratio:2/1;max-height:82vh}
+.hero-full--video .hero-full-img{object-position:center top}
+@media (max-width:700px){.hero-full--video{aspect-ratio:4/5}.hero-full--video .hero-full-img{object-position:center top}}
 .hero-full video.hero-full-img{object-position:center}
 .hero-full .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.65)}
 .hero-full .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
