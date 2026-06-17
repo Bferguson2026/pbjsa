@@ -125,7 +125,7 @@ body.has-hero-overlay .site-header:not(.is-scrolled) .site-logo{filter:brightnes
 .hero-full--video{aspect-ratio:2/1;max-height:82vh}
 .hero-full--video .hero-full-img{object-position:center top}
 @media (max-width:700px){.hero-full--video{aspect-ratio:4/5}.hero-full--video .hero-full-img{object-position:center top}}
-.hero-full video.hero-full-img{object-position:center}
+.hero-full--video video.hero-full-img{object-position:center top}
 .hero-full .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.65)}
 .hero-full .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
 .hero-full-overlay .hero-stats{margin-top:2rem}
