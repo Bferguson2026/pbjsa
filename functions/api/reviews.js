@@ -19,7 +19,11 @@ export async function onRequest(context) {
   const findData = await findRes.json();
 
   if (!findData.candidates || !findData.candidates.length) {
-    return new Response(JSON.stringify({ error: 'Business not found' }), {
+    return new Response(JSON.stringify({
+      error: 'Business not found',
+      google_status: findData.status || null,
+      google_message: findData.error_message || null,
+    }), {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
     });
