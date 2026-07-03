@@ -27,7 +27,7 @@ function closeAll(){allBackdrop.hidden=true;document.body.style.overflow='';}
 if(closeBtn)closeBtn.addEventListener('click',closeSingle);if(allClose)allClose.addEventListener('click',closeAll);if(backdrop)backdrop.addEventListener('click',function(e){if(e.target===backdrop)closeSingle();});if(allBackdrop)allBackdrop.addEventListener('click',function(e){if(e.target===allBackdrop)closeAll();});document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSingle();closeAll();}});fetch('/api/reviews').then(function(r){return r.json();}).then(function(data){var reviews=data.reviews||[];var rating=data.rating;var total=data.user_ratings_total;if(summary&&rating){summary.innerHTML='<span class="rating-score">'+rating.toFixed(1)+'</span>'
 +'<span class="rating-stars">'+starsSvg(Math.round(rating))+'</span>'
 +(total?'<span class="rating-count">('+total+' reviews on Google)</span>':'');}
-if(!reviews.length){ticker.innerHTML='<p class="reviews-loading">No reviews found.</p>';return;}
+if(!reviews.length){var sec0=ticker.closest('.section');if(sec0)sec0.style.display='none';return;}
 function makeCard(r,idx){return'<article class="quote-card" role="button" tabindex="0" aria-label="Read full review by '+r.author_name+'" data-idx="'+idx+'">'
 +'<div class="review-star-row">'+starsSvg(r.rating)+'</div>'
 +'<blockquote>'+r.text+'</blockquote>'
@@ -44,5 +44,5 @@ card.addEventListener('click',open);card.addEventListener('keydown',function(e){
 +'<blockquote>'+r.text+'</blockquote>'
 +'<div class="quote-author">'+avatarHtml(r)
 +'<div><p class="quote-author-name">'+r.author_name+'</p></div>'
-+'</div></div>';}).join('');seeAllLink.addEventListener('click',function(e){e.preventDefault();allBackdrop.hidden=false;document.body.style.overflow='hidden';allClose.focus();});}}).catch(function(){ticker.innerHTML='<p class="reviews-loading">Unable to load reviews right now.</p>';});})();
++'</div></div>';}).join('');seeAllLink.addEventListener('click',function(e){e.preventDefault();allBackdrop.hidden=false;document.body.style.overflow='hidden';allClose.focus();});}}).catch(function(){var secE=ticker.closest('.section');if(secE)secE.style.display='none';});})();
 (function(){if(!document.body.classList.contains('has-hero-overlay'))return;var h=document.querySelector('.site-header');if(!h)return;function s(){h.classList.toggle('is-scrolled',window.scrollY>60);}window.addEventListener('scroll',s,{passive:true});s();})();
