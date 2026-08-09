@@ -164,3 +164,6 @@ body.has-hero-overlay .site-header:not(.is-scrolled) .brand .site-logo--white{di
 .media-toggle:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .media-toggle--ticker{position:static;margin:0 auto 1rem;display:inline-flex;background:rgba(0,0,0,.45)}
 .media-toggle--ticker:hover{background:rgba(0,0,0,.7)}
+.footer-credit{font-size:.82rem;color:rgba(255,255,255,.65)}
+.footer-credit a{color:rgba(255,255,255,.85);text-decoration:none;font-weight:600}
+.footer-credit a:hover{color:var(--pink);text-decoration:underline}
