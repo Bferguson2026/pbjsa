@@ -1,0 +1,18 @@
+# Cloudflare Pages response headers.
+#
+# Scripts and styles are referenced unversioned (assets/js/main.js), so Pages'
+# default 4h asset cache meant a fix could take hours to reach returning
+# visitors - the audio player duration bug stayed broken in warm browsers well
+# after it was fixed on the origin. Revalidate these on every load instead:
+# ETag turns the check into a ~300 byte 304 when nothing changed, so a deploy
+# reaches everyone immediately at negligible cost.
+#
+# Images, audio and video deliberately keep the Pages default. They get updated
+# in place here (logo revisions, regenerated narration), so a long immutable
+# cache would be a worse trap than the one this file exists to fix.
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
