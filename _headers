@@ -1,18 +1,31 @@
 # Cloudflare Pages response headers.
 #
-# Scripts and styles are referenced unversioned (assets/js/main.js), so Pages'
-# default 4h asset cache meant a fix could take hours to reach returning
-# visitors - the audio player duration bug stayed broken in warm browsers well
-# after it was fixed on the origin. Revalidate these on every load instead:
-# ETag turns the check into a ~300 byte 304 when nothing changed, so a deploy
-# reaches everyone immediately at negligible cost.
-#
-# Images, audio and video deliberately keep the Pages default. They get updated
-# in place here (logo revisions, regenerated narration), so a long immutable
-# cache would be a worse trap than the one this file exists to fix.
-
+# Scripts and styles are referenced unversioned (assets/js/main.js,
+# assets/css/styles.css), so a long browser cache means a fix can sit
+# undelivered for hours - the audio player duration bug stayed broken in warm
+# browsers well after it was fixed on the origin. Revalidate these on every
+# load: ETag turns the check into a ~300 byte 304 when nothing has changed, so
+# a deploy reaches everyone immediately at negligible cost.
 /assets/js/*
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/css/*
   Cache-Control: public, max-age=0, must-revalidate
+
+# Media is set explicitly rather than left to default. Pages' own default for
+# every asset is max-age=0, so without these rules media would revalidate on
+# every page load once the zone stops overriding Cache-Control - that means a
+# conditional request for the hero video and the multi-megabyte blog narration
+# on each visit. 4h keeps today's effective behaviour.
+#
+# Deliberately not a long immutable cache: these files get replaced in place
+# (logo revisions, regenerated narration), so a year-long TTL would be a worse
+# trap than the one this file exists to fix.
+/assets/img/*
+  Cache-Control: public, max-age=14400, must-revalidate
+
+/assets/audio/*
+  Cache-Control: public, max-age=14400, must-revalidate
+
+/assets/video/*
+  Cache-Control: public, max-age=14400, must-revalidate
