@@ -1,0 +1,9 @@
+# Agent tooling scratch state (oh-my-claudecode).
+# These are runtime session/state files, not site content. They were being
+# committed and served publicly, exposing local paths and shell transcripts.
+.omc/
+
+# Local editor/OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
