@@ -97,12 +97,6 @@
 
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ── Splash Screen ────────────────────────────────────── -->
-  <div id="splash" aria-hidden="true">
-    <img src="assets/img/pbj-logo-full.svg" alt="PB&amp;J Strategic Accounting" class="splash-logo">
-    <p class="splash-tagline">Precision &middot; Balance &middot; Just-in-Time</p>
-  </div>
-
   <!-- ── Header ──────────────────────────────────────────── -->
   <header class="site-header">
     <div class="container header-inner">
@@ -390,25 +384,6 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
-  <script>
-    (function () {
-      var splash = document.getElementById('splash');
-      if (!splash) return;
-      var dismissed = false;
-      document.body.classList.add('splash-active');
-      function dismiss() {
-        if (dismissed) return;
-        dismissed = true;
-        splash.remove();
-        document.body.classList.remove('splash-active');
-      }
-      splash.addEventListener('animationend', function (e) {
-        if (e.animationName === 'splash-exit') dismiss();
-      });
-      /* Failsafe: if animationend never fires, clear the splash anyway. */
-      setTimeout(dismiss, 4000);
-    })();
-  </script>
   <script src="assets/js/chat.js" defer></script>
 </body>
 </html>
