@@ -13,6 +13,20 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Without JS nothing ever adds .is-scrolled, so the transparent hero header
+       would keep its white nav over light page content. Force the solid state. -->
+  <noscript>
+    <style>
+      body.has-hero-overlay .site-header{background:rgba(250,248,244,.95);box-shadow:0 2px 14px rgba(28,25,23,.08)}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a{color:var(--text-muted);text-shadow:none}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a:hover{color:#0d6b85;background:var(--surface-2);text-shadow:none}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .nav-list a[aria-current="page"]{color:var(--accent);background:var(--surface-3);box-shadow:none}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .nav-cta{color:#1c1917;background:var(--pink);border-color:transparent}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .hamburger span{background-color:var(--text)}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .brand .site-logo:not(.site-logo--white){display:block}
+      body.has-hero-overlay .site-header:not(.is-scrolled) .brand .site-logo--white{display:none}
+    </style>
+  </noscript>
   <link rel="preload" href="assets/img/hero/services-hero.jpg" as="image">
   <link rel="canonical" href="https://pbjsa.com/services">
   <meta property="og:type" content="website">
@@ -385,11 +399,14 @@
     var lastTs   = null;
     var RPM      = 0.35;
 
-    /* Build dot indicators */
+    /* Build dot indicators. These are a decorative mirror of the orbit nodes,
+       which are already labelled buttons with aria-pressed, so the dots stay
+       out of the tab order to match the aria-hidden on their container. */
     keys.forEach(function (key, i) {
       var dot = document.createElement('button');
       dot.className = 'orbit-dot' + (i === 0 ? ' is-active' : '');
       dot.setAttribute('aria-label', SERVICES[key].title);
+      dot.setAttribute('tabindex', '-1');
       dot.dataset.key = key;
       dot.addEventListener('click', function () { setActive(key); });
       dotsWrap.appendChild(dot);

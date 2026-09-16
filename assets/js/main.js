@@ -40,7 +40,41 @@ function cardBody(r){return'<div class="review-star-row">'+starsSvg(r.rating)+'<
 +'<p class="review-expand-hint">Read full review</p>';}
 function makeCard(r,idx){return'<article class="quote-card"><button type="button" class="quote-card-inner quote-card-btn" aria-haspopup="dialog" aria-label="Read full review by '+esc(r.author_name)+'" data-idx="'+idx+'">'+cardBody(r)+'</button></article>';}
 function makeCloneCard(r){return'<article class="quote-card" aria-hidden="true"><div class="quote-card-inner">'+cardBody(r)+'</div></article>';}
-var cardHtml=reviews.map(makeCard).join('');var cloneHtml=reviews.map(makeCloneCard).join('');ticker.innerHTML=cardHtml+cloneHtml;ticker.querySelectorAll('.quote-card-btn[data-idx]').forEach(function(btn){btn.addEventListener('click',function(){openSingle(reviews[parseInt(btn.getAttribute('data-idx'),10)],btn);});});if(seeAllLink){var allList=document.getElementById('all-reviews-list');allList.innerHTML=reviews.map(function(r){return'<div class="all-review-item">'
+var cardHtml=reviews.map(makeCard).join('');var cloneHtml=reviews.map(makeCloneCard).join('');ticker.innerHTML=cardHtml+cloneHtml;ticker.querySelectorAll('.quote-card-btn[data-idx]').forEach(function(btn){btn.addEventListener('click',function(){openSingle(reviews[parseInt(btn.getAttribute('data-idx'),10)],btn);});});
+/* A focused card must be brought into the ticker window (WCAG 2.4.11).
+:focus-within already pauses the marquee, but the card can be parked off the
+window or under the mask fade, so seek the marquee animation to the offset that
+centres the focused card, then nudge the (overflow:hidden) scroll container if
+anything is still outside. The CSS keeps the animation paused while focus is
+inside and resumes from the new offset on blur, so nothing jumps back. */
+var tickerWrap=ticker.closest('.reviews-ticker-wrap');
+if(tickerWrap){
+var seekTickerTo=function(card){
+if(!ticker.getAnimations)return;
+var anims=ticker.getAnimations();
+if(!anims.length||!anims[0].effect)return;
+var dur=anims[0].effect.getTiming().duration;
+var half=ticker.scrollWidth/2;
+if(!dur||!half)return;
+var p=(card.offsetLeft+card.offsetWidth/2-tickerWrap.clientWidth/2)/half;
+anims[0].currentTime=Math.max(0,Math.min(1,p))*dur;
+};
+var revealCard=function(btn){
+var card=btn.closest('.quote-card')||btn;
+seekTickerTo(card);
+var wr=tickerWrap.getBoundingClientRect(),cr=card.getBoundingClientRect();
+if(cr.left<wr.left)tickerWrap.scrollLeft-=wr.left-cr.left;
+else if(cr.right>wr.right)tickerWrap.scrollLeft+=cr.right-wr.right;
+};
+ticker.addEventListener('focusin',function(e){
+var btn=e.target&&e.target.closest?e.target.closest('.quote-card-btn'):null;
+if(btn)revealCard(btn);
+});
+ticker.addEventListener('focusout',function(e){
+if(!e.relatedTarget||!ticker.contains(e.relatedTarget))tickerWrap.scrollLeft=0;
+});
+}
+if(seeAllLink){var allList=document.getElementById('all-reviews-list');allList.innerHTML=reviews.map(function(r){return'<div class="all-review-item">'
 +'<div class="review-star-row">'+starsSvg(r.rating)
 +'<span style="margin-left:auto;font-size:.78rem;color:var(--text-muted);">'+esc(r.relative_time_description||'')+'</span>'
 +'</div>'
