@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Pricing-page-only bread cards and jelly mascot. Every rule is gated behind
+       classes that assets/js/pbj-jelly.js adds, so this is inert without JS. -->
+  <link rel="stylesheet" href="assets/css/pbj-jelly.css">
   <!-- Without JS nothing ever adds .is-scrolled, so the transparent hero header
        would keep its white nav over light page content. Force the solid state. -->
   <noscript>
@@ -227,6 +230,20 @@
 
     <!-- Monthly Plans -->
     <section class="section plans-section" aria-labelledby="monthly-plans-heading">
+      <script>
+      /* Bread-card size reservation. Runs synchronously during parse, before
+         the cards are laid out, so assets/js/pbj-jelly.js costs no layout
+         shift when it takes over. Never runs with JavaScript off, so the
+         no-JS render stays identical to the un-enhanced page. The module
+         clears the class whether it enhances or declines; the timeout is the
+         belt-and-braces path for a module that never loads at all. */
+      (function () {
+        var section = document.currentScript && document.currentScript.parentElement;
+        if (!section) return;
+        section.classList.add('pbj-jelly-pending');
+        setTimeout(function () { section.classList.remove('pbj-jelly-pending'); }, 2500);
+      })();
+    </script>
       <div class="container">
         <div class="section-header section-header--center">
           <span class="eyebrow">Monthly Plans</span>
@@ -481,5 +498,73 @@
 
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/chat.js" defer></script>
+
+  <!-- ── PB&J bread cards + jelly mascot ──────────────────────────────────
+       Decorative art, inlined once so the module can clone it per card and
+       the stylesheet can reach the character's arm and leg groups. Both are
+       author-written, trusted SVG. role/aria-labelledby are stripped here
+       (and again by the module) because every clone is aria-hidden.
+       Assets of record: assets/img/pbj/jelly-jar.svg, bread-slice.svg.
+       Lid uses the site pink (--pink #ff43a4) so it matches the badges. -->
+  <template id="pbj-jelly-template">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 250">
+      <g stroke="#482447" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <g id="legs" fill="none">
+          <g id="leg-left"><path d="M91 188 Q83 207 88 219"/><path d="M89 214 C81 208 67 214 67 222 C67 230 91 233 96 225 Q100 220 89 214Z" fill="#fff5dc"/></g>
+          <g id="leg-right"><path d="M149 188 Q159 205 151 219"/><path d="M151 215 C162 209 176 216 175 224 C172 232 149 231 145 225 Q143 220 151 215Z" fill="#fff5dc"/></g>
+        </g>
+        <g id="arm-left"><path d="M63 120 Q36 121 35 145" fill="none"/><path d="M36 140 C25 132 22 141 25 147 C13 149 17 163 28 164 C41 170 49 153 43 146 L40 145" fill="#fff5dc"/></g>
+        <g id="arm-right"><path d="M177 119 Q203 124 207 96" fill="none"/><path d="M205 101 C193 99 188 87 195 85 L200 88 C188 72 197 69 205 82 C200 65 211 67 213 82 C217 70 226 76 220 91 Q219 101 205 101Z" fill="#fff5dc"/></g>
+        <g id="jar-body">
+          <path d="M76 54 L164 54 L164 65 Q183 72 184 96 L184 169 Q184 195 158 196 L82 196 Q56 195 56 169 L56 96 Q57 73 76 65Z" fill="#eed9f1"/>
+          <path d="M65 92 Q80 81 98 91 T131 92 T174 90 L175 168 Q175 185 158 186 L82 186 Q65 185 65 168Z" fill="#a863b6" stroke="none"/>
+          <path d="M67 169 Q102 182 174 162 L174 170 Q174 185 157 185 L82 185 Q68 184 67 169" fill="#8a429c" stroke="none"/>
+          <path d="M66 101 L66 117 M67 82 L70 77" stroke="#fff9ff" stroke-width="6" fill="none"/>
+          <path d="M84 105 Q120 98 156 105 Q167 108 167 119 L167 157 Q166 171 152 173 Q119 178 85 172 Q73 170 73 157 L73 120 Q73 108 84 105Z" fill="#fff6df" stroke-width="3.5"/>
+          <g id="face">
+            <g id="eyes" fill="#482447" stroke="none"><ellipse cx="101" cy="132" rx="4.8" ry="7"/><ellipse cx="139" cy="132" rx="4.8" ry="7"/></g>
+            <g fill="#f29fb3" stroke="none"><ellipse cx="88" cy="143" rx="8" ry="4.5"/><ellipse cx="152" cy="143" rx="8" ry="4.5"/></g>
+            <path d="M108 145 Q120 159 132 145" fill="none" stroke-width="3.5"/>
+            <path d="M115 162 Q109 156 113 154 Q117 152 120 156 Q124 151 128 155 Q132 160 120 166Z" fill="#f1439d" stroke="none"/>
+          </g>
+          <path d="M80 62 H160" fill="none" stroke="#c58ecd" stroke-width="3"/>
+        </g>
+        <g id="lid">
+          <rect x="62" y="35" width="116" height="27" rx="9" fill="#ff43a4"/>
+          <path d="M73 40 Q120 34 166 40" stroke="#ffb4d8" stroke-width="3" fill="none"/>
+          <path d="M77 49 V56 M92 48 V56 M107 48 V56 M122 48 V56 M137 48 V56 M152 48 V56 M165 49 V56" stroke="#a62c73" stroke-width="3"/>
+          <path d="M72 33 Q75 26 85 29" stroke="#482447" stroke-width="3" fill="none"/>
+        </g>
+      </g>
+    </svg>
+  </template>
+  <template id="pbj-bread-template">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" preserveAspectRatio="none">
+      <path d="M9 87 C-7 67 0 27 42 14 Q89 0 150 13 Q211 0 258 14 C300 27 307 67 291 87 L291 570 Q291 596 267 596 L33 596 Q9 596 9 570Z" fill="#d79b51" stroke="#ad7033" stroke-width="2"/>
+      <path d="M18 83 C4 63 15 39 48 27 Q91 12 150 26 Q209 12 252 27 C285 39 296 63 282 83 L282 568 Q282 585 265 585 L35 585 Q18 585 18 568Z" fill="#fff6df"/>
+      <g fill="#d2a766" opacity=".6"><ellipse cx="22" cy="112" rx="2" ry="3"/><ellipse cx="278" cy="173" rx="2" ry="2"/><ellipse cx="22" cy="418" rx="2" ry="2"/><ellipse cx="278" cy="553" rx="2" ry="3"/><ellipse cx="68" cy="577" rx="3" ry="2"/></g>
+    </svg>
+  </template>
+  <script type="module">
+    import { initPbjJelly } from './assets/js/pbj-jelly.js';
+    const start = () => {
+      const root = document.querySelector('section.plans-section');
+      if (!root) return;
+      // One root across both the monthly grid and the specialty grid, so
+      // exactly one character is visible anywhere on the page.
+      let destroy = initPbjJelly({ root });
+      // Small handle so the enhancement can be torn down or re-run (SPA-style
+      // teardown, and the acceptance checks) without reloading the page.
+      window.__pbjJelly = {
+        init() { destroy = initPbjJelly({ root }); return destroy; },
+        destroy() { destroy(); }
+      };
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    } else {
+      start();
+    }
+  </script>
 </body>
 </html>

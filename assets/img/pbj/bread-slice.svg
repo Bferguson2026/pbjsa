@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600" preserveAspectRatio="none" role="img" aria-labelledby="bread-title">
+  <title id="bread-title">Golden bread slice pricing card</title>
+  <path d="M9 87 C-7 67 0 27 42 14 Q89 0 150 13 Q211 0 258 14 C300 27 307 67 291 87 L291 570 Q291 596 267 596 L33 596 Q9 596 9 570Z" fill="#d79b51" stroke="#ad7033" stroke-width="2"/>
+  <path d="M18 83 C4 63 15 39 48 27 Q91 12 150 26 Q209 12 252 27 C285 39 296 63 282 83 L282 568 Q282 585 265 585 L35 585 Q18 585 18 568Z" fill="#fff6df"/>
+  <g fill="#d2a766" opacity=".6"><ellipse cx="22" cy="112" rx="2" ry="3"/><ellipse cx="278" cy="173" rx="2" ry="2"/><ellipse cx="22" cy="418" rx="2" ry="2"/><ellipse cx="278" cy="553" rx="2" ry="3"/><ellipse cx="68" cy="577" rx="3" ry="2"/></g>
+</svg>

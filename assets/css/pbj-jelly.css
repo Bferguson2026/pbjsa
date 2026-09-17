@@ -1,0 +1,246 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   PB&J bread cards + jelly mascot — pricing page only.
+   Adapted from the PBJ-Jelly-Handoff reference (revision 3).
+   Loaded AFTER assets/css/styles.css, on pricing.html only.
+
+   Everything here is gated behind classes that only JavaScript adds
+   (.pbj-jelly-pending from the inline reservation script, .pbj-jelly-root and
+   .pbj-bread-card from the module), so with JavaScript off this file changes
+   nothing at all.
+
+   Site adaptations vs. the handoff reference:
+   - No `color:#482447` on the card. The site's own token colours are kept
+     so the measured WCAG AA contrast pass is not disturbed.
+   - Lid pink comes from the inlined SVG (site --pink #ff43a4, not #f1439d).
+   - Horizontal padding is `max(24px, 8%)` rather than
+     `clamp(24px, 8%, 32px)`: the 32px cap put text on the crust once a card
+     grows past ~420px.
+   - Bread cards are capped at 480px and centred while the grids are a single
+     column. A full-width 713px card flattens the dome into a tray; 480px is
+     the widest the silhouette still reads as a slice, and it matches the card
+     width the two-column breakpoint already produces. The grid's own columns
+     and breakpoints are untouched.
+   - Row spacing is taken over from the grid gap so the 112px character
+     clearance is not added on top of the existing 1.25rem row gap.
+   - The character's horizontal anchor is
+     `clamp(70%, calc(100% - 86px), calc(100% - 60px))` rather than
+     `min(77%, …)`. The two agree exactly on the 373px desktop card the
+     reference was tuned for, but the flat 77% drifts inward on wider cards,
+     where it no longer reads as the upper-RIGHT corner.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* ── Pre-paint reservation ──────────────────────────────────────────────
+   The inline script at the top of .plans-section adds .pbj-jelly-pending
+   synchronously during parse, so the space the character needs is already
+   reserved at first layout and the module does not shove the grid down when
+   it arrives. The module swaps pending -> root, and clears pending even when
+   it declines to enhance.
+
+   Deliberately limited to spacing: margin, row gap and the single-column
+   width. The card's own border, background, radius, shadow and padding are
+   left exactly as styles.css sets them, so a module that arrives late (or
+   never) shows the site's real cards rather than bare text. That leaves a
+   small residual shift when the enhancement does land after first paint —
+   the padding swap only, measured at ~0.004 — which is the better trade. */
+.pbj-jelly-pending .price-card { margin-block-start: 112px; }
+.pbj-jelly-pending .pricing-grid { row-gap: 40px; }
+.pbj-jelly-pending .pricing-specialty { row-gap: 40px; margin-top: 0; }
+
+/* ── Row / section rhythm ────────────────────────────────────────────────
+   Each card reserves 112px above itself for the seated character; 40px more
+   is left for the top of the hop arc. The grids' own row-gap is replaced
+   (not added to) so rows are not double-spaced. Column gap is untouched. */
+.pbj-jelly-root .pricing-grid { row-gap: 40px; }
+.pbj-jelly-root .pricing-specialty { row-gap: 40px; margin-top: 0; }
+
+/* Single-column band: keep the slice from flattening into a tray. */
+@media (max-width: 768px) {
+  .pbj-jelly-pending .price-card,
+  .pbj-jelly-root .price-card.pbj-bread-card {
+    /* A definite width, not max-width: an auto inline margin switches off a
+       grid item's stretch, which would leave each card at its own content
+       width and the column visibly ragged. */
+    width: min(100%, 480px);
+    margin-inline: auto;
+  }
+}
+
+/* ── Card shell ─────────────────────────────────────────────────────────
+   The outer <article> keeps its size and stays perfectly still: it is the
+   hover/focus hit target. All the site's card chrome is neutralised here
+   because the bread SVG becomes the card's visible surface. */
+.price-card.pbj-bread-card {
+  --pbj-tilt: 2.2deg;
+  --pbj-duration: 1000ms;
+  --pbj-effective-tilt: min(var(--pbj-tilt), var(--pbj-safe-tilt, 2.2deg));
+  position: relative;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-block-start: 112px;
+  min-width: 0;
+  transform: none;
+}
+/* Beats .price-card:hover and .price-card--featured:hover (higher specificity). */
+.price-card.pbj-bread-card:hover,
+.price-card.pbj-bread-card:focus-within {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+}
+.price-card.pbj-bread-card::before,
+.price-card.pbj-bread-card::after {
+  content: none;
+}
+
+/* ── Rotating inner surface ─────────────────────────────────────────────
+   Only this rotates. isolation:isolate gives the bread (z-index:-1) a
+   stacking context to sit behind the text without escaping the card. */
+.pbj-card-surface {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--pbj-card-padding-top, 72px)
+           var(--pbj-card-padding-x, max(24px, 8%))
+           var(--pbj-card-padding-bottom, 44px);
+  transform-origin: 50% 96%;
+  transition: none; /* enabled one frame after init so nothing animates on load */
+}
+.pbj-jelly-root.pbj-jelly-ready .pbj-card-surface {
+  transition: transform 380ms ease-out;
+}
+
+/* Centre the card "header" (badge, title, tagline, price) on the bread;
+   feature lists, group labels and notes keep normal left alignment. */
+.pbj-card-surface { text-align: center; }
+.pbj-card-surface > .price-badge { align-self: center; }
+.pbj-card-surface > ul,
+.pbj-card-surface > .feature-group-label,
+.pbj-card-surface > .price-note { text-align: left; }
+
+.pbj-jelly-active { z-index: 3; }
+.pbj-jelly-active > .pbj-card-surface { transform: rotate(var(--pbj-effective-tilt)); }
+.pbj-jelly-active.pbj-jelly-arriving > .pbj-card-surface {
+  animation: pbjBreadTip var(--pbj-duration) both;
+}
+
+/* ── Bread art ──────────────────────────────────────────────────────────
+   Stretches to the card's real content height (preserveAspectRatio="none"
+   lives on the SVG element itself). Decorative and inert. */
+.pbj-card-surface > .pbj-bread-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 0 #ae702526);
+}
+.pbj-jelly-active .pbj-bread-art { filter: drop-shadow(0 7px 0 #b03a832e); }
+
+/* ── Character ──────────────────────────────────────────────────────────
+   ~132px wide, aspect ratio preserved, seated on the upper-right crust.
+   The top percentage tracks the crust crown as long copy makes cards taller. */
+.pbj-jelly-perch {
+  position: absolute;
+  top: calc(2.6% - 108px);
+  left: clamp(70%, calc(100% - 86px), calc(100% - 60px));
+  width: 132px;
+  height: 137.5px;
+  margin-left: -66px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(25px) scale(.8);
+  transform-origin: 50% 78.4%;
+}
+.pbj-jelly-perch svg { width: 100%; height: 100%; overflow: visible; }
+.pbj-jelly-active .pbj-jelly-perch { opacity: 1; transform: rotate(-5deg); }
+.pbj-jelly-active.pbj-jelly-arriving .pbj-jelly-perch {
+  animation: pbjJellyHop var(--pbj-duration) both;
+}
+.pbj-jelly-leaving .pbj-jelly-perch { animation: pbjJellyLeave 170ms both; }
+
+.pbj-jelly-perch [data-jelly-part="arm-right"] { transform-origin: 177px 119px; }
+.pbj-jelly-perch [data-jelly-part="leg-left"]  { transform-origin: 91px 188px; }
+.pbj-jelly-perch [data-jelly-part="leg-right"] { transform-origin: 149px 188px; }
+.pbj-jelly-active [data-jelly-part="arm-right"] { transform: rotate(55deg); }
+.pbj-jelly-active [data-jelly-part="leg-left"]  { transform: rotate(-18deg); }
+.pbj-jelly-active [data-jelly-part="leg-right"] { transform: rotate(-26deg); }
+.pbj-jelly-active.pbj-jelly-arriving [data-jelly-part="arm-right"] { animation: pbjSitArm var(--pbj-duration) both; }
+.pbj-jelly-active.pbj-jelly-arriving [data-jelly-part="leg-left"]  { animation: pbjSitLeft var(--pbj-duration) both; }
+.pbj-jelly-active.pbj-jelly-arriving [data-jelly-part="leg-right"] { animation: pbjSitRight var(--pbj-duration) both; }
+/* Greeting: seated already, only the hand moves, with a long pause each cycle. */
+.pbj-jelly-active.pbj-jelly-welcome [data-jelly-part="arm-right"] {
+  transform: rotate(0);
+  animation: pbjWelcomeWave 4500ms ease-in-out infinite;
+}
+
+.pbj-jelly-shadow {
+  position: absolute;
+  top: 2.6%;
+  left: clamp(70%, calc(100% - 86px), calc(100% - 60px));
+  width: 55px;
+  height: 9px;
+  margin-left: -27.5px;
+  border-radius: 50%;
+  background: #8b542c30;
+  opacity: 0;
+  pointer-events: none;
+}
+.pbj-jelly-active .pbj-jelly-shadow { opacity: 1; }
+
+/* ── Keyframes ──────────────────────────────────────────────────────────
+   Arrival ~1s: contact at 56%, squash, settle. Bread tips after contact at
+   1.6x the resting angle, recoils to 0.65x, settles. */
+@keyframes pbjJellyHop {
+  0%   { opacity: 0; transform: translate(-62px, 24px) rotate(-20deg) scale(.8); }
+  15%  { opacity: 1; }
+  36%  { transform: translate(-19px, -43px) rotate(9deg) scale(.94, 1.06); }
+  56%  { transform: translateY(2px) rotate(-8deg) scale(1.12, .86); }
+  72%  { transform: translateY(-4px) rotate(-2deg) scale(.98, 1.02); }
+  88%, 100% { opacity: 1; transform: rotate(-5deg); }
+}
+@keyframes pbjBreadTip {
+  0%, 50% { transform: rotate(0); }
+  65%     { transform: rotate(calc(var(--pbj-effective-tilt) * 1.6)); }
+  82%     { transform: rotate(calc(var(--pbj-effective-tilt) * .65)); }
+  100%    { transform: rotate(var(--pbj-effective-tilt)); }
+}
+@keyframes pbjJellyLeave {
+  from { opacity: 1; transform: rotate(-5deg); }
+  to   { opacity: 0; transform: translate(-15px, -22px) rotate(-15deg) scale(.8); }
+}
+@keyframes pbjSitArm   { 0%,52% { transform: rotate(-12deg); } 78% { transform: rotate(64deg); } 100% { transform: rotate(55deg); } }
+@keyframes pbjSitLeft  { 0%,45% { transform: rotate(24deg); }  70% { transform: rotate(-30deg); } 88% { transform: rotate(-12deg); } 100% { transform: rotate(-18deg); } }
+@keyframes pbjSitRight { 0%,45% { transform: rotate(-40deg); } 70% { transform: rotate(-10deg); } 88% { transform: rotate(-32deg); } 100% { transform: rotate(-26deg); } }
+@keyframes pbjWelcomeWave { 0%,7%,32%,100% { transform: rotate(0); } 13%,25% { transform: rotate(14deg); } 19% { transform: rotate(-10deg); } }
+
+/* ── Reduced motion ─────────────────────────────────────────────────────
+   No hop, wave, tip or exit fade: the jar simply appears seated on the
+   selected card and the bread stays upright. Cancelling the animations is
+   not enough on its own — .pbj-jelly-welcome pins the greeting arm at
+   rotate(0), which outranks the seated rule — so the seated pose is
+   restated here at matching specificity, later in the cascade. */
+@media (prefers-reduced-motion: reduce) {
+  .pbj-bread-card,
+  .pbj-bread-card * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .pbj-jelly-active > .pbj-card-surface { transform: none; }
+  .pbj-jelly-active .pbj-jelly-perch { opacity: 1; transform: rotate(-5deg); }
+  .pbj-jelly-leaving .pbj-jelly-perch { opacity: 0; }
+  .pbj-jelly-active.pbj-jelly-welcome [data-jelly-part="arm-right"] { transform: rotate(55deg); }
+  .pbj-jelly-active.pbj-jelly-welcome [data-jelly-part="leg-left"]  { transform: rotate(-18deg); }
+  .pbj-jelly-active.pbj-jelly-welcome [data-jelly-part="leg-right"] { transform: rotate(-26deg); }
+}
