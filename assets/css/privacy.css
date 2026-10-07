@@ -1,13 +1,23 @@
-.privacy-banner,.privacy-dialog{color:var(--text);background:var(--surface);border:2px solid var(--accent-dark);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow-lg);font-size:1rem;line-height:1.5}
-.privacy-banner{position:fixed;left:1rem;bottom:1rem;max-width:38rem;width:calc(100% - 2rem);z-index:10002;max-height:calc(100dvh - 2rem);overflow:auto}
+.privacy-banner,.privacy-dialog{color:var(--text);background:var(--surface);box-shadow:var(--shadow-lg);font-size:1rem;line-height:1.5}
+.privacy-banner{position:fixed;inset:auto 0 0;display:flex;align-items:center;gap:1rem;padding:1rem max(1rem,calc((100vw - 1200px)/2));padding-bottom:max(1rem,env(safe-area-inset-bottom));border-top:1px solid var(--accent-dark);z-index:10002;max-height:calc(100dvh - 1rem);overflow:auto}
 .privacy-banner[hidden]{display:none}
-.privacy-banner h2,.privacy-dialog h2{font-size:1.3rem;margin:0 0 .5rem}
-.privacy-banner p,.privacy-dialog p{margin:.75rem 0}
+.privacy-banner>p{flex:1;margin:0;font-size:.9rem;line-height:1.5}
+.privacy-banner>.privacy-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));flex:0 0 auto;gap:.5rem}
+.privacy-banner>.privacy-actions button{font-size:.9rem;padding:.6rem .9rem}
+.privacy-banner #pbj-privacy-storage-status{flex-basis:100%}
+.privacy-banner #pbj-privacy-storage-status:empty{display:none}
+.privacy-banner:has(#pbj-privacy-storage-status:not(:empty)){flex-wrap:wrap}
+.privacy-dialog h2{font-size:1.3rem;margin:0 0 .5rem}
+.privacy-dialog p{margin:.75rem 0}
 .privacy-actions{display:flex;flex-wrap:wrap;gap:.65rem}
 .privacy-actions button,.privacy-settings{cursor:pointer;color:var(--text);background:var(--surface-2);border:1px solid var(--text-muted);border-radius:var(--radius-sm);padding:.65rem .9rem;min-height:44px;font:inherit}
 .privacy-actions button:hover,.privacy-settings:hover{background:var(--accent-light)}
-.privacy-dialog{width:min(38rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);overflow:auto}
+.privacy-actions button:focus-visible,.privacy-settings:focus-visible,.privacy-banner a:focus-visible{outline:3px solid var(--accent-dark);outline-offset:3px}
+.privacy-dialog{border:2px solid var(--accent-dark);border-radius:var(--radius);padding:1.25rem;width:min(38rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);overflow:auto}
 .privacy-dialog::backdrop{background:color-mix(in srgb,var(--text) 55%,transparent)}
+.privacy-choices-open [data-privacy-settings]{display:none}
+.privacy-choices-open .chat-widget{display:none}
+body{padding-bottom:var(--privacy-banner-height,0px)}
 .privacy-option{display:flex;gap:.75rem;align-items:center;font-weight:700;margin:1rem 0}
 .privacy-option input{width:1.3rem;height:1.3rem}
 .privacy-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem}
@@ -15,4 +25,5 @@
 .privacy-copy{max-width:72ch;margin:auto;padding:8rem 1.25rem 4rem}
 .privacy-copy h2{font-size:1.5rem;margin:2rem 0 .75rem}
 .privacy-copy h1{font-size:clamp(2rem,5vw,3rem)}
-@media(max-width:480px){.privacy-actions button{flex:1 1 100%}.privacy-banner{bottom:.5rem;left:.5rem;width:calc(100% - 1rem)}.privacy-collection-note{font-size:.8rem}}
+@media(max-width:900px){.privacy-banner{flex-direction:column;align-items:stretch;gap:.75rem}.privacy-banner>.privacy-actions{flex-basis:auto}.privacy-banner>.privacy-actions button{padding:.5rem .35rem}}
+@media(max-width:480px){.privacy-dialog .privacy-actions button{flex:1 1 100%}.privacy-banner{padding:.75rem;padding-bottom:max(.75rem,env(safe-area-inset-bottom))}.privacy-collection-note{font-size:.8rem}}

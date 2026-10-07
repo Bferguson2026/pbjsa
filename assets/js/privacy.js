@@ -60,13 +60,21 @@
     unsavedChoice = persisted ? null : choice;
     if (!analytics) disableAnalytics();
     if (channel) channel.postMessage(choice);
-    document.getElementById('pbj-privacy-banner').hidden = persisted;
+    syncPrivacyUI();
     showStorageStatus(!persisted);
     if (dialog.open) dialog.close();
     if (analytics) startAnalytics();
     // Unload the already-running vendor code after opting out. Never send a
     // Google Consent Mode denial ping or load the vendor library to reject.
     if (wasLoaded && !analytics && persisted) location.reload();
+  }
+
+  function syncPrivacyUI() {
+    var banner = document.getElementById('pbj-privacy-banner');
+    if (!banner || !dialog) return;
+    banner.hidden = dialog.open || (!!choice && !unsavedChoice);
+    document.body.classList.toggle('privacy-choices-open', !banner.hidden || dialog.open);
+    document.documentElement.style.setProperty('--privacy-banner-height', banner.hidden ? '0px' : banner.offsetHeight + 'px');
   }
 
   function showStorageStatus(failed) {
@@ -88,7 +96,7 @@
         if (loaded && (!saved || !saved.analytics)) location.reload();
         else if (loaded) { unsavedChoice = choice; showStorageStatus(true); }
       } else startAnalytics();
-      if (document.getElementById('pbj-privacy-banner')) document.getElementById('pbj-privacy-banner').hidden = !unsavedChoice;
+      syncPrivacyUI();
       showStorageStatus(!!unsavedChoice);
     };
   } catch (_) {}
@@ -106,14 +114,16 @@
 
   function init() {
     var ui = document.createElement('div');
-    ui.innerHTML = '<section id="pbj-privacy-banner" class="privacy-banner" aria-label="Privacy choices"><h2>Your privacy choices</h2><p>Optional Google Analytics helps us understand site use. It stays off until you choose to allow it. Contact forms and chat work without analytics. <a href="/privacy">Privacy notice</a></p><div class="privacy-actions"><button type="button" data-privacy-reject>Reject optional</button><button type="button" data-privacy-customize>Customize</button><button type="button" data-privacy-accept>Accept analytics</button></div></section><dialog id="pbj-privacy-dialog" class="privacy-dialog" aria-labelledby="pbj-privacy-title"><h2 id="pbj-privacy-title">Privacy settings</h2><p>Necessary site features and the cookie that remembers your choice remain available.</p><label class="privacy-option"><input id="pbj-privacy-analytics" type="checkbox"> Allow Google Analytics</label><p>Analytics can collect page visits and browser information and use cookies. No advertising category is enabled by this site.</p><p>Choose Reject optional to withdraw analytics permission. If analytics is running, the page reloads to stop it. This does not erase information already sent.</p><div class="privacy-actions"><button type="button" data-privacy-reject>Reject optional</button><button type="button" id="pbj-privacy-save">Save choices</button><button type="button" id="pbj-privacy-close">Close</button></div><p><a href="/privacy">Read the privacy notice</a></p></dialog>';
+    ui.innerHTML = '<section id="pbj-privacy-banner" class="privacy-banner" aria-label="Cookie choices"><p>We use optional Google Analytics cookies to understand site use, only with your permission. <a href="/privacy">Privacy notice</a></p><div class="privacy-actions"><button type="button" data-privacy-accept>Accept all</button><button type="button" data-privacy-reject>Reject optional</button><button type="button" data-privacy-customize>Cookie settings</button></div></section><dialog id="pbj-privacy-dialog" class="privacy-dialog" aria-labelledby="pbj-privacy-title"><h2 id="pbj-privacy-title">Cookie settings</h2><p>Necessary site features and the cookie that remembers your choice remain available.</p><label class="privacy-option"><input id="pbj-privacy-analytics" type="checkbox"> Allow Google Analytics</label><p>Analytics can collect page visits and browser information and use cookies. No advertising category is enabled by this site.</p><p>Choose Reject optional to withdraw analytics permission. If analytics is running, the page reloads to stop it. This does not erase information already sent.</p><div class="privacy-actions"><button type="button" data-privacy-reject>Reject optional</button><button type="button" id="pbj-privacy-save">Save choices</button><button type="button" id="pbj-privacy-close">Close</button></div><p><a href="/privacy">Read the privacy notice</a></p></dialog>';
     document.body.appendChild(ui);
     var storageStatus = document.createElement('p');
     storageStatus.id = 'pbj-privacy-storage-status';
     storageStatus.setAttribute('role', 'status');
     document.getElementById('pbj-privacy-banner').appendChild(storageStatus);
     dialog = document.getElementById('pbj-privacy-dialog');
-    document.getElementById('pbj-privacy-banner').hidden = !!choice;
+    syncPrivacyUI();
+    if (window.ResizeObserver) new ResizeObserver(syncPrivacyUI).observe(document.getElementById('pbj-privacy-banner'));
+    window.addEventListener('resize', syncPrivacyUI);
     document.querySelectorAll('[data-privacy-reject]').forEach(function (button) { button.addEventListener('click', function () { saveChoice(false); }); });
     document.querySelectorAll('[data-privacy-accept]').forEach(function (button) { button.addEventListener('click', function () { saveChoice(true); }); });
     document.querySelectorAll('[data-privacy-customize], [data-privacy-settings]').forEach(function (button) {
@@ -121,11 +131,12 @@
         opener = button;
         document.getElementById('pbj-privacy-analytics').checked = !!(choice && choice.analytics);
         dialog.showModal();
+        syncPrivacyUI();
       });
     });
     document.getElementById('pbj-privacy-save').addEventListener('click', function () { saveChoice(document.getElementById('pbj-privacy-analytics').checked); });
     document.getElementById('pbj-privacy-close').addEventListener('click', function () { dialog.close(); });
-    dialog.addEventListener('close', function () { if (opener && !opener.closest('[hidden]')) opener.focus(); });
+    dialog.addEventListener('close', function () { syncPrivacyUI(); if (opener && !opener.closest('[hidden]')) opener.focus(); });
     addNotices();
     // The existing contact/callback dialogs are assembled by the site script.
     new MutationObserver(addNotices).observe(document.body, { childList: true, subtree: true });
